@@ -1,2 +1,4 @@
 click~=8.0.1
 packaging~=20.9
+requests~=2.25.1
+tqdm~=4.61.1
