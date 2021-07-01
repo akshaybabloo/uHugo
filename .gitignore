@@ -132,3 +132,4 @@ dmypy.json
 /temp.py
 /temp.sh
 /_docs/_build/
+/docs/doctrees/
