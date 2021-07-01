@@ -3,7 +3,7 @@ import zipfile
 from pathlib import Path
 import logging
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 
 def bin_folder() -> str:
