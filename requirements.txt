@@ -2,3 +2,6 @@ click~=8.0.1
 packaging~=20.9
 requests~=2.25.1
 tqdm~=4.61.1
+toml~=0.10.2
+pyyaml~=5.4.1
+psutil~=5.8.0
