@@ -1,26 +1,10 @@
+import logging
 import tarfile
 import zipfile
-from pathlib import Path
-import logging
+
+from .checks import bin_folder
 
 log = logging.getLogger(__name__)
-
-
-def bin_folder() -> str:
-    """
-    Gives the path of the user bin folder if exists else a bin folder is created in the
-    ``<user home>/bin``
-
-    :return: ``bin`` location
-    """
-
-    bin_path = Path(Path.home(), "bin")
-
-    if not bin_path.is_dir():
-        log.debug(f"bin directory does not exists. Creating one now. New path: {bin_path!r}")
-        bin_path.mkdir()
-
-    return str(bin_path)
 
 
 def install(extract_from: str, os_type: str, move_to: str = bin_folder()):
