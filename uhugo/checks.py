@@ -1,5 +1,5 @@
 import json
-import os
+import platform
 from pathlib import Path
 import logging
 
@@ -7,9 +7,9 @@ import requests
 
 log = logging.getLogger(__name__)
 
-if os.name == 'nt':
+if platform.system() == 'Windows':
     from .terminal_commands.windows import *
-elif os.name == 'posix':
+elif platform.system() == 'Linux' or platform.system() == 'Darwin':
     from .terminal_commands.posix import *
 else:
     raise OSError("Unknown OS")

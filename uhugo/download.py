@@ -1,10 +1,11 @@
+import platform
 import tempfile
 
 import requests
 from tqdm import tqdm
 
 
-def download_hugo_zip(version: str, os_type: str, download_to: str = tempfile.gettempdir()) -> str:
+def download_hugo_zip(version: str, os_type: str = platform.system(), download_to: str = tempfile.gettempdir()) -> str:
     """
     Download the Hugo file to temp folder.
 
@@ -18,11 +19,11 @@ def download_hugo_zip(version: str, os_type: str, download_to: str = tempfile.ge
             response = requests.get(
                 f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_macOS-64bit.tar.gz",
                 stream=True)
-        elif os_type == 'Windows':
+        elif os_type == 'Windows' or os_type == 'nt':
             response = requests.get(
                 f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_Windows-64bit.zip",
                 stream=True)
-        elif os_type == "posix":
+        elif os_type == "posix" or os_type == "Linux":
             response = requests.get(
                 f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_Linux-64bit.zip",
                 stream=True)
