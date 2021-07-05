@@ -1,3 +1,4 @@
+import os.path
 import platform
 import tempfile
 
@@ -13,6 +14,8 @@ def download_hugo_zip(version: str, os_type: str = platform.system(), download_t
     :param version: Version number to download
     :param download_to: Path to download to
     """
+
+    download_to = os.path.join(download_to, f"hugo_{version}")
 
     with open(download_to, "wb") as file:
         if os_type == 'Darwin':
