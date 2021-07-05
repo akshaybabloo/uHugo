@@ -1,4 +1,11 @@
+import json
 import os
+from pathlib import Path
+import logging
+
+import requests
+
+log = logging.getLogger(__name__)
 
 if os.name == 'nt':
     from .terminal_commands.windows import *
@@ -23,3 +30,19 @@ def bin_folder() -> str:
         bin_path.mkdir()
 
     return str(bin_path)
+
+
+def get_latest_version_api(override_version: str = None) -> str:
+    """
+    Get the latest Hugo version
+
+    :return: version number
+    """
+
+    if override_version is not None:
+        return override_version
+
+    hugo_response = requests.get("https://api.github.com/repos/gohugoio/hugo/releases/latest")
+    hugo_response = json.loads(hugo_response.content.decode('utf-8'))['tag_name'][1:]
+
+    return hugo_response
