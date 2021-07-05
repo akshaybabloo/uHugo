@@ -8,7 +8,7 @@ from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, Trans
 
 progress = Progress(
     TextColumn("[bold blue]{task.fields[filename]}", justify="right"),
-    BarColumn(bar_width=None),
+    BarColumn(),
     "[progress.percentage]{task.percentage:>3.1f}%",
     "•",
     DownloadColumn(),
