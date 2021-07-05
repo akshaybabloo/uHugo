@@ -133,3 +133,7 @@ dmypy.json
 /temp.sh
 /_docs/_build/
 /docs/doctrees/
+
+*.toml
+*.yaml
+*.yml
