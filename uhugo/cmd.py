@@ -67,11 +67,5 @@ def update(ctx: click.core.Context, to: Text):
     pass
 
 
-@cli.command(help="Delete, reinstall Hugo binary and update paths accordingly")
-@click.pass_context
-def reset(ctx: click.core.Context):
-    pass
-
-
 def main():
     cli(obj={})
