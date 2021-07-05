@@ -40,4 +40,7 @@ def check_hugo_file() -> Provider:
         with open(path) as f:
             data = yaml.load(f)
 
+    if data.get("uhugoProvider", None) is None:
+        raise KeyError("'uhugoProvider' is required")
+
     return Provider(data.get("uhugoProvider", None), data.get("uhugoProviderFileName", None))
