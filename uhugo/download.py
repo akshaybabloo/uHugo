@@ -4,7 +4,7 @@ import requests
 from tqdm import tqdm
 
 
-def download(version: str, os_type: str, download_to: str = tempfile.gettempdir()) -> str:
+def download_hugo_zip(version: str, os_type: str, download_to: str = tempfile.gettempdir()) -> str:
     """
     Download the Hugo file to temp folder.
 
