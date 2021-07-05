@@ -1,10 +1,10 @@
 import logging
+import os
 from typing import Text
-from packaging import version
-import platform
-from rich.console import Console
 
 import click
+from rich.console import Console
+from rich.panel import Panel
 
 from . import __version__
 from .checks import check_hugo, get_latest_version_api
@@ -24,26 +24,40 @@ def cli(ctx: click.core.Context, debug: bool):
     ctx.obj['debug'] = debug
 
     if debug:
-        logging.basicConfig(level='DEBUG', format="%(asctime)s %(name)s - %(levelname)s:'%(message)s'", datefmt='%d-%b-%y %H:%M:%S')
+        logging.basicConfig(level='DEBUG',
+                            format="%(asctime)s %(name)s - %(levelname)s:'%(message)s'",
+                            datefmt='%d-%b-%y %H:%M:%S')
 
 
 @cli.command(help="Install latest Hugo binary files")
-@click.option("--version/-v", 'ver', help="Hugo version to download")
+@click.option('--version', '-v', 'ver', default=None, help="Hugo version to download")
+@click.option('--force', is_flag=True, default=False, help="Reinstall Hugo")
 @click.pass_context
-def install(ctx: click.core.Context, ver: Text):
+def install(ctx: click.core.Context, ver: Text, force: bool):
     console = Console()
 
     hugo = check_hugo()
-    if hugo.exists:
-        click.echo("Hugo has already been installed. Use 'uhugo update' to update.")
+    if hugo.exists and not force:
+        click.echo(console.print("Hugo has already been installed. Use 'uhugo update' to update.",
+                                 style="red"))
         exit(0)
 
-    _ver = get_latest_version_api(ver)
-    download_path = download_hugo_zip(_ver)
-    installed_path = install_hugo(download_path)
+    if force:
+        log.debug(f"Deleting existing Hugo at {hugo.path}")
+        os.remove(hugo.path)
 
-    click.echo(console.print("Hugo installed! :tada:", style='green bold'), color=True)
-    click.echo(console.print(f"Make sure '{installed_path}' is in your $PATH", style="bold"), color=True)
+    with console.status("Fetching latest version", spinner="dots"):
+        _ver = get_latest_version_api(ver)
+    click.echo(console.print(f"- Latest version is v{_ver}", style="yellow bold"), color=True)
+
+    download_path = download_hugo_zip(_ver)
+
+    with console.status(f"Installing Hugo {_ver}", spinner="dots"):
+        installed_path = install_hugo(download_path)
+
+    console.print("\nHugo installed! :tada:\n", style='green bold')
+
+    console.print(Panel.fit(f"[bold green]Make sure {installed_path!r} is in your $PATH", title="Note"))
 
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
