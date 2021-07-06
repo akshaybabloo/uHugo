@@ -2,7 +2,7 @@ import json
 import platform
 from pathlib import Path
 import logging
-
+from rich import print, console
 import requests
 
 log = logging.getLogger(__name__)
@@ -40,7 +40,13 @@ def get_latest_version_api(override_version: str = None) -> str:
     """
 
     if override_version is not None:
-        return override_version
+        hugo_response = requests.get(f"https://api.github.com/repos/gohugoio/hugo/releases/tags/v{override_version}")
+        if hugo_response.ok:
+            return override_version
+        else:
+            log.debug("Override version request error occurred", hugo_response.content)
+            print(f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases for more information.")
+            exit(1)
 
     hugo_response = requests.get("https://api.github.com/repos/gohugoio/hugo/releases/latest")
     hugo_response = json.loads(hugo_response.content.decode('utf-8'))['tag_name'][1:]
