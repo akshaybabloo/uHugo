@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Union
 
+import rich
+
 # HERE = os.path.abspath(os.path.dirname(__file__))
 HERE = os.getcwd()
 
@@ -11,6 +13,7 @@ HERE = os.getcwd()
 class Provider:
     name: Union[str, None]
     file_name: Union[str, None]
+    key: Union[str, None]
 
 
 def check_hugo_file() -> Provider:
@@ -40,7 +43,4 @@ def check_hugo_file() -> Provider:
         with open(path) as f:
             data = yaml.load(f)
 
-    if data.get("uhugoProvider", None) is None:
-        raise KeyError("'uhugoProvider' is required")
-
-    return Provider(data.get("uhugoProvider", None), data.get("uhugoProviderFileName", None))
+    return Provider(data.get("uhugoProvider", None), data.get("uhugoProviderFileName", None), data.get("uhugoProviderKey", None))
