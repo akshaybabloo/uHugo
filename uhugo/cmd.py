@@ -32,8 +32,7 @@ def cli(ctx: click.core.Context, debug: bool):
 @cli.command(help="Install latest Hugo binary files")
 @click.option('--version', '-v', 'ver', default=None, help="Hugo version to download")
 @click.option('--force', is_flag=True, default=False, help="Reinstall Hugo")
-@click.pass_context
-def install(ctx: click.core.Context, ver: Text, force: bool):
+def install(ver: Text, force: bool):
     console = Console()
 
     hugo = check_hugo()
@@ -62,8 +61,8 @@ def install(ctx: click.core.Context, ver: Text, force: bool):
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", help="Updates to a specified version")
-@click.pass_context
-def update(ctx: click.core.Context, to: Text):
+def update(to: Text):
+    console = Console()
     pass
 
 
