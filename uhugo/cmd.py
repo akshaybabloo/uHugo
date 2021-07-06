@@ -3,6 +3,7 @@ import os
 from typing import Text
 
 import click
+from packaging import version
 from rich.console import Console
 from rich.panel import Panel
 
@@ -60,10 +61,32 @@ def install(ver: Text, force: bool):
 
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
-@click.option("--to", help="Updates to a specified version")
+@click.option("--to", default=None, help="Updates to a specified version")
 def update(to: Text):
     console = Console()
-    pass
+
+    hugo = check_hugo()
+    if not hugo.exists:
+        click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.",
+                                 style="red"))
+        exit(0)
+
+    with console.status("Fetching latest version", spinner="dots"):
+        _ver = get_latest_version_api(to)
+
+    if (hugo.version >= version.Version(_ver)) and not to:
+        console.print("Hugo is up to date :tada:", style="green")
+        exit(0)
+
+    if not to:
+        console.print(Panel.fit(f"New version available, v{hugo.version} -> v{_ver}", title=f"Hugo v{_ver}"), style="green")
+
+    download_path = download_hugo_zip(_ver)
+
+    with console.status(f"Installing Hugo {_ver}", spinner="dots"):
+        install_hugo(download_path)
+
+    console.print("\nHugo installed! :tada:\n", style='green bold')
 
 
 def main():
