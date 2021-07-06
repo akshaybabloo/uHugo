@@ -11,6 +11,7 @@ from . import __version__
 from .checks import check_hugo, get_latest_version_api
 from .download import download_hugo_zip
 from .install import install_hugo
+from .post_install.detect_providers import check_hugo_file
 
 log = logging.getLogger(__name__)
 
@@ -86,8 +87,14 @@ def update(to: Text):
     with console.status(f"Installing Hugo {_ver}", spinner="dots"):
         install_hugo(download_path)
 
-    console.print("\nHugo installed! :tada:\n", style='green bold')
+    console.print("\nHugo updated! :tada:\n", style='green bold')
 
+    with console.status("Updating providers") as s:
+        provider = check_hugo_file()
+        if provider.name is None:
+            return
+
+        s.update(f"{provider.name.title()} found")
 
 def main():
     cli(obj={})
