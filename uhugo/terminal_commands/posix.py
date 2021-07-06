@@ -1,4 +1,5 @@
 import subprocess
+
 from packaging import version
 
 from . import Hugo, hugo_version_cmd

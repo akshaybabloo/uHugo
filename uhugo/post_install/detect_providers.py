@@ -3,8 +3,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Union
 
-import rich
-
 # HERE = os.path.abspath(os.path.dirname(__file__))
 HERE = os.getcwd()
 

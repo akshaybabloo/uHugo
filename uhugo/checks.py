@@ -1,9 +1,10 @@
 import json
+import logging
 import platform
 from pathlib import Path
-import logging
-from rich import print, console
+
 import requests
+from rich import print
 
 log = logging.getLogger(__name__)
 

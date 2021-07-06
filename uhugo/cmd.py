@@ -96,5 +96,6 @@ def update(to: Text):
 
         s.update(f"{provider.name.title()} found")
 
+
 def main():
     cli(obj={})
