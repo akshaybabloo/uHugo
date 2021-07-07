@@ -11,7 +11,7 @@ from . import __version__
 from .checks import check_hugo, get_latest_version_api
 from .download import download_hugo_zip
 from .install import install_hugo
-from .post_install.detect_providers import check_hugo_file
+from .post_install.detect_providers import check_hugo_file, check_fs
 
 log = logging.getLogger(__name__)
 
@@ -92,6 +92,12 @@ def update(to: Text):
     with console.status("Updating providers") as s:
         provider = check_hugo_file()
         if provider.name is None:
+            return
+
+        s.update(f"{provider.name.title()} found")
+
+        provider = check_fs()
+        if not provider:
             return
 
         s.update(f"{provider.name.title()} found")

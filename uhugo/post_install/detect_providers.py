@@ -45,3 +45,20 @@ def check_hugo_file() -> Provider:
             data = yaml.load(f)
 
     return Provider(data.get("uhugoProvider", None), data.get("uhugoProviderFileName", None), data.get("uhugoProviderKey", None))
+
+
+def check_fs() -> Union[Provider, None]:
+    """
+    Checks file system for any providers that matches the list
+
+    :return: A Provider
+    """
+
+    files = ["netlify.yaml", "vercel.json"]
+
+    for file in files:
+        path = Path(HERE, file)
+        if path.exists():
+            return Provider(path.name.split(".")[0], path.__str__(), None)
+
+    return None
