@@ -6,10 +6,16 @@
 Welcome to uHugo's documentation!
 =================================
 
+uHugo is a helper tool for `Hugo <https://gohugo.org>`_ that automates the instillation and updating of the application. 
+It also updates static site cloud provider's configurations if exists.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   commands
+   providers
+   reference/index
 
 
 Indices and tables

@@ -10,6 +10,10 @@ Welcome to uHugo's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   commands
+   providers
+   reference/index
+
 
 
 Indices and tables
