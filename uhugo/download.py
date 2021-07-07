@@ -20,7 +20,7 @@ progress = Progress(
 )
 
 
-def download_hugo_zip(version: str, os_type: str = platform.system(), download_to: str = tempfile.gettempdir()) -> str:
+def download_hugo_zip(version: str, os_type: str = None, download_to: str = None) -> str:
     """
     Download the Hugo file to temp folder.
 
@@ -28,6 +28,12 @@ def download_hugo_zip(version: str, os_type: str = platform.system(), download_t
     :param version: Version number to download
     :param download_to: Path to download to
     """
+
+    if not os_type:
+        os_type = platform.system()
+
+    if not download_to:
+        download_to = tempfile.gettempdir()
 
     download_to = os.path.join(download_to, f"hugo_{version}")
     with progress:
