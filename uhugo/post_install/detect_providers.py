@@ -25,24 +25,19 @@ def check_hugo_file() -> Provider:
     :return Provider: An object with ``name`` and ``file_name``
     """
 
-    path = Path(os.path.join(HERE, "config.toml"))
+    path = Path(HERE, "config.toml")
     if not path.exists():
-        path = Path(os.path.join(HERE, "config.yaml"))
+        path = Path(HERE, "config.yaml")
         if not path.exists():
             raise FileNotFoundError("config.yaml or config.toml not found")
         else:
-            suffix = "yaml"
+            import yaml
+            with open(path) as f:
+                data = yaml.load(f)
     else:
-        suffix = "toml"
-
-    if suffix == "toml":
         import toml
         with open(path) as f:
             data = toml.load(f)
-    else:
-        import yaml
-        with open(path) as f:
-            data = yaml.load(f)
 
     return Provider(data.get("uhugoProvider", None), data.get("uhugoProviderFileName", None), data.get("uhugoProviderKey", None))
 
