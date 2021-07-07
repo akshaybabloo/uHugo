@@ -37,6 +37,7 @@ def get_latest_version_api(override_version: str = None) -> str:
     """
     Get the latest Hugo version
 
+    :param override_version: An override version of Hugo
     :return: version number
     """
 
