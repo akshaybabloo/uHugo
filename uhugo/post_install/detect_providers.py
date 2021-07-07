@@ -9,6 +9,9 @@ HERE = os.getcwd()
 
 @dataclass
 class Provider:
+    """
+    This holds the information about the provider
+    """
     name: Union[str, None]
     file_name: Union[str, None]
     key: Union[str, None]
