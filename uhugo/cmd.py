@@ -94,8 +94,6 @@ def update(to: Text):
         if provider.name is None:
             return
 
-        s.update(f"{provider.name.title()} found")
-
         provider = check_fs()
         if not provider:
             return
