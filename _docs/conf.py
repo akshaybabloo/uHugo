@@ -12,6 +12,7 @@
 #
 import os
 import sys
+from uhugo import __version__
 
 sys.path.insert(0, os.path.abspath('../'))
 
@@ -22,7 +23,7 @@ copyright = '2021, Akshay Raj Gollahalli'
 author = 'Akshay Raj Gollahalli'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = __version__
 
 # -- General configuration ---------------------------------------------------
 
