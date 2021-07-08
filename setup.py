@@ -14,7 +14,8 @@ def get_requirements(*parts):
 setup(
     name='uhugo',
     version=__version__,
-    packages=get_requirements('requirements.txt'),
+    install_requires=get_requirements('requirements.txt'),
+    packages=["uhugo"],
     url='https://github.com/akshaybabloo/uHugo',
     license='MIT',
     author='Akshay Raj Gollahalli',
