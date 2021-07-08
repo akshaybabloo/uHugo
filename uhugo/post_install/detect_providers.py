@@ -29,7 +29,7 @@ def check_hugo_file() -> Provider:
     if not path.exists():
         path = Path(HERE, "config.yaml")
         if not path.exists():
-            raise FileNotFoundError("config.yaml or config.toml not found")
+            return Provider(None, None, None)
         else:
             import yaml
             with open(path) as f:
