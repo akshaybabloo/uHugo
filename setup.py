@@ -1,27 +1,32 @@
 import codecs
 import os
+import pathlib
 from distutils.core import setup
+
+from setuptools import find_packages
 
 from uhugo import __version__
 
-HERE = os.path.abspath(os.path.dirname(__file__)) + os.sep
+here = pathlib.Path(__file__).parent.resolve()
+
+long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 
 def get_requirements(*parts):
-    return codecs.open(os.path.join(HERE, *parts), 'r').read().splitlines()
+    return codecs.open(os.path.join(here, *parts), 'r').read().splitlines()
 
 
 setup(
     name='uhugo',
     version=__version__,
     install_requires=get_requirements('requirements.txt'),
-    packages=["uhugo"],
+    packages=find_packages(),
     url='https://github.com/akshaybabloo/uHugo',
     license='MIT',
     author='Akshay Raj Gollahalli',
     author_email='akshay@gollahalli.com',
     description='Hugo publisher is a CLI utility helper for Hugo static site builder',
-    long_description=open('README.md').read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     keywords=['hugo', 'hugo cli helper'],
     classifiers=[
