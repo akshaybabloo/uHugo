@@ -8,4 +8,7 @@ Reference
    cmd
    download
    checks
+   install
+   terminal_commands/posix
+   terminal_commands/windows
 

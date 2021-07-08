@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>uhugo.checks &#8212; uHugo 0.0.1 documentation</title>
+    <title>uhugo.install &#8212; uHugo 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="uhugo.install" href="install.html" />
-    <link rel="prev" title="uhugo.download" href="download.html" /> 
+    <link rel="next" title="uhugo.terminal_commands.posix" href="terminal_commands/posix.html" />
+    <link rel="prev" title="uhugo.checks" href="checks.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,14 +28,14 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="install.html" title="uhugo.install"
+          <a href="terminal_commands/posix.html" title="uhugo.terminal_commands.posix"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="download.html" title="uhugo.download"
+          <a href="checks.html" title="uhugo.checks"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Reference</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">uhugo.checks</a></li> 
+        <li class="nav-item nav-item-this"><a href="">uhugo.install</a></li> 
       </ul>
     </div>  
 
@@ -44,30 +44,22 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-uhugo.checks">
-<span id="uhugo-checks"></span><h1>uhugo.checks<a class="headerlink" href="#module-uhugo.checks" title="Permalink to this headline">¶</a></h1>
+  <section id="module-uhugo.install">
+<span id="uhugo-install"></span><h1>uhugo.install<a class="headerlink" href="#module-uhugo.install" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="uhugo.checks.bin_folder">
-<span class="sig-prename descclassname"><span class="pre">uhugo.checks.</span></span><span class="sig-name descname"><span class="pre">bin_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="../_modules/uhugo/checks.html#bin_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.checks.bin_folder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gives the path of the user bin folder if exists else a bin folder is created in the
-<code class="docutils literal notranslate"><span class="pre">&lt;user</span> <span class="pre">home&gt;/bin</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">bin</span></code> location</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="uhugo.checks.get_latest_version_api">
-<span class="sig-prename descclassname"><span class="pre">uhugo.checks.</span></span><span class="sig-name descname"><span class="pre">get_latest_version_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">override_version</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="../_modules/uhugo/checks.html#get_latest_version_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.checks.get_latest_version_api" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the latest Hugo version</p>
+<dt class="sig sig-object py" id="uhugo.install.install_hugo">
+<span class="sig-prename descclassname"><span class="pre">uhugo.install.</span></span><span class="sig-name descname"><span class="pre">install_hugo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extract_from</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">os_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'Darwin'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_to</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'/Users/akshayrajgollahalli/bin'</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="reference internal" href="../_modules/uhugo/install.html#install_hugo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.install.install_hugo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Installs the <code class="docutils literal notranslate"><span class="pre">hugo</span></code> binary at a given path</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>override_version</strong> – An override version of Hugo</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extract_from</strong> – The path zip/tar file downloaded</p></li>
+<li><p><strong>os_type</strong> – Type of OS - <code class="docutils literal notranslate"><span class="pre">Windows</span></code>, <code class="docutils literal notranslate"><span class="pre">Darwin</span></code> or <code class="docutils literal notranslate"><span class="pre">posix</span></code>.</p></li>
+<li><p><strong>move_to</strong> – Instillation location. Defaults to <code class="xref py py-func docutils literal notranslate"><span class="pre">bin_folder()</span></code></p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>version number</p>
+<dd class="field-even"><p>Installation path</p>
 </dd>
 </dl>
 </dd></dl>
@@ -82,15 +74,15 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="download.html"
-                        title="previous chapter">uhugo.download</a></p>
+  <p class="topless"><a href="checks.html"
+                        title="previous chapter">uhugo.checks</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="install.html"
-                        title="next chapter">uhugo.install</a></p>
+  <p class="topless"><a href="terminal_commands/posix.html"
+                        title="next chapter">uhugo.terminal_commands.posix</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/reference/checks.rst.txt"
+      <li><a href="../_sources/reference/install.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -118,14 +110,14 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="install.html" title="uhugo.install"
+          <a href="terminal_commands/posix.html" title="uhugo.terminal_commands.posix"
              >next</a> |</li>
         <li class="right" >
-          <a href="download.html" title="uhugo.download"
+          <a href="checks.html" title="uhugo.checks"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.0.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Reference</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">uhugo.checks</a></li> 
+        <li class="nav-item nav-item-this"><a href="">uhugo.install</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
