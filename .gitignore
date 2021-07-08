@@ -134,7 +134,4 @@ dmypy.json
 /_docs/_build/
 /docs/doctrees/
 
-*.toml
-*.yaml
-*.yml
 .vscode/
