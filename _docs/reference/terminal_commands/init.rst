@@ -1,5 +1,5 @@
-uhugo.terminal_commands
-=============================
+uhugo.terminal_commands.__init__
+================================
 
 .. automodule:: uhugo.terminal_commands
     :members:
