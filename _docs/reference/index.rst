@@ -9,6 +9,7 @@ Reference
    download
    checks
    install
+   terminal_commands/init
    terminal_commands/posix
    terminal_commands/windows
 
