@@ -1,5 +1,7 @@
 # uHugo
 
+
+
 uHugo is a CLI tool to install and update Hugo binary as well as updating any cloud providers
 
 ## Instillation
@@ -33,3 +35,7 @@ Using `uhugo install`, will download the latest binary file from [Hugo's reposit
 Using `uhugo update`, will update the current binary to the latest one. You can use `--to` flag to specify the version you want to rather update to. Example `uhugo update --to 0.80.0`
 
 ![uhugo update](https://github.com/akshaybabloo/uHugo/raw/main/screenshots/cmd-update.gif)
+
+## Providers
+
+Coming soon.
