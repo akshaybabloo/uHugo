@@ -32,7 +32,7 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Intended Audience :: Developers',
         'Environment :: Console',
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 3 - Alpha',
         'Topic :: Utilities'
     ],
     entry_points={
