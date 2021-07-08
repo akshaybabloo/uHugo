@@ -1,6 +1,6 @@
 # uHugo
 
-[![PyPI version](https://badge.fury.io/py/uhugo.svg)](https://badge.fury.io/py/uhugo) [https://img.shields.io/badge/Documentation-Documentation%20for%20uHugo-green](https://akshaybabloo.github.io/uHugo/)
+[![PyPI version](https://badge.fury.io/py/uhugo.svg)](https://badge.fury.io/py/uhugo) [![Docs](https://img.shields.io/badge/Documentation-Documentation%20for%20uHugo-green)](https://akshaybabloo.github.io/uHugo/)
 
 uHugo is a CLI tool to install and update Hugo binary as well as updating any cloud providers
 
