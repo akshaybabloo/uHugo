@@ -1,12 +1,18 @@
 from pathlib import Path
 
+from . import ProviderBase
 
-def update_file(path: Path):
+
+class Netlify(ProviderBase):
     """
-    Updates ``netlify.yaml`` file with Hugo's version
-
-    :param path: Path of ``netlify.yaml``
-    :return:
+    Netlify provider
     """
-    pass
 
+    def update_file(self, path: Path):
+        """
+        Updates ``netlify.yaml`` file with Hugo's version
+
+        :param path: Path of ``netlify.yaml``
+        :return:
+        """
+        pass

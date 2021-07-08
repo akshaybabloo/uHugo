@@ -1,22 +1,28 @@
 from pathlib import Path
 from typing import Text
 
+from uhugo.post_install.providers import ProviderBase
 
-def update_file(path: Path):
+
+class Vercel(ProviderBase):
     """
-    Updates ``vercel.yaml`` file with Hugo's version
-
-    :param path: Path of ``netlify.yaml``
-    :return:
+    Vercel provider
     """
-    pass
 
+    def update_file(self, path: Path):
+        """
+        Updates ``vercel.yaml`` file with Hugo's version
 
-def update_api(key: Text):
-    """
-    Updates Cloudflare Pages environment variable of ``HUGO_VERSION``.
+        :param path: Path of ``netlify.yaml``
+        :return:
+        """
+        pass
 
-    :param key: API key
-    :return:
-    """
-    pass
+    def update_api(self, key: Text):
+        """
+        Updates Cloudflare Pages environment variable of ``HUGO_VERSION``.
+
+        :param key: API key
+        :return:
+        """
+        pass
