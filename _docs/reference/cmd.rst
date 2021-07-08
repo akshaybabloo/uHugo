@@ -1,5 +1,5 @@
-Commands
-========
+uhugo.cmd
+=========
 
 .. automodule:: uhugo.cmd
     :members:
