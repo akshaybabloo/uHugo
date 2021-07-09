@@ -44,3 +44,11 @@ class ProviderBase:
         :return:
         """
         pass
+
+    def get_projects(self, project_name: Text = None) -> Any:
+        """
+        Checks and gets the current project
+
+        :param project_name: Name of the project to update
+        """
+        pass
