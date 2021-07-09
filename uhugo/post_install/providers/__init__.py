@@ -7,12 +7,14 @@ class ProviderBase:
     This is a base class for all the providers
     """
 
-    def __init__(self, api_key: Text = None, config_path: Text = None):
+    def __init__(self, api_key: Text = None, config_path: Text = None, hugo_version: Text = None):
         """
 
+        :param hugo_version: New Hugo version
         :param api_key: Authentication key for providers
         :param config_path: Path for configuration file of the provider
         """
+        self.hugo_version = hugo_version
         self.api_key = api_key
         self.path = config_path
 
@@ -22,8 +24,11 @@ class ProviderBase:
         if not self.path:
             self.path = os.environ.get("UHUGO_CONFIG_PATH", None)
 
-        if not self.api_key and not self.path:
-            raise ValueError("key or path not set")
+        if not self.hugo_version:
+            self.hugo_version = os.environ.get("HUGO_VERSION", None)
+
+        if not self.api_key and not self.path and not self.hugo_version:
+            raise ValueError("api_ky, config_path or hugo_version not set")
 
     def update_api(self, project_name: Text = None):
         """
