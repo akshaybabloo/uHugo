@@ -1,20 +1,22 @@
 import os
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Union
+
+from pydantic import BaseModel
 
 # HERE = os.path.abspath(os.path.dirname(__file__))
 HERE = os.getcwd()
 
 
-@dataclass
-class Provider:
+class Provider(BaseModel):
     """
     This holds the information about the provider
     """
-    name: Union[str, None]
-    file_name: Union[str, None]
-    key: Union[str, None]
+    name: Union[str, None] = None
+    file_name: Union[str, None] = None
+    api_key: Union[str, None] = None
+    account_id: Union[str, None] = None
+    email_address: Union[str, None] = None
 
 
 def check_hugo_file() -> Provider:
@@ -29,7 +31,7 @@ def check_hugo_file() -> Provider:
     if not path.exists():
         path = Path(HERE, "config.yaml")
         if not path.exists():
-            return Provider(None, None, None)
+            return Provider()
         else:
             import yaml
             with open(path) as f:
@@ -39,7 +41,7 @@ def check_hugo_file() -> Provider:
         with open(path) as f:
             data = toml.load(f)
 
-    return Provider(data.get("uhugoProvider", None), data.get("uhugoProviderFileName", None), data.get("uhugoProviderKey", None))
+    return Provider(**data['uhugo'])
 
 
 def check_fs() -> Union[Provider, None]:
@@ -54,6 +56,6 @@ def check_fs() -> Union[Provider, None]:
     for file in files:
         path = Path(HERE, file)
         if path.exists():
-            return Provider(path.name.split(".")[0], path.__str__(), None)
+            return Provider(**{"name": path.name.split(".")[0], "path": path.__str__()})
 
     return None
