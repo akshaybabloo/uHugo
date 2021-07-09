@@ -1,4 +1,7 @@
+import os
 from typing import Text
+
+import requests
 
 from uhugo.post_install.providers import ProviderBase
 
@@ -33,8 +36,28 @@ class Cloudflare(ProviderBase):
             "X-Auth-Email": email_address,
             "X-Auth-Key": self.api_key
         }
+
+    def update_api(self, project_name: Text = None):
+        """
         Updates Cloudflare Pages environment variable of ``HUGO_VERSION``.
 
-        :param key: API key
+        :param project_name: Name of the project to update
         :return:
         """
+
+        if not project_name:
+            projects = self._get_projects()
+            print(projects)
+
+        print(self._get_project(project_name))
+
+    def _get_projects(self):
+
+        response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects",
+                                headers=self.headers)
+        return response.content
+
+    def _get_project(self, project_name: Text):
+        response = requests.get(f"accounts/{self.account_id}/pages/projects/{project_name}",
+                                headers=self.headers)
+        return response.content
