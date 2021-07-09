@@ -1,5 +1,5 @@
 import os
-from typing import Text
+from typing import Text, Any
 
 
 class ProviderBase:
@@ -30,14 +30,16 @@ class ProviderBase:
         if not self.api_key and not self.path and not self.hugo_version:
             raise ValueError("api_ky, config_path or hugo_version not set")
 
-    def update_api(self, project_name: Text = None):
+    def update_api(self, project_name: Text = None) -> Any:
         """
         Updates an API
+
+        :param project_name: Name of the project to update
         :return:
         """
         pass
 
-    def update_file(self):
+    def update_file(self) -> Any:
         """
         Updates a configuration file
 
