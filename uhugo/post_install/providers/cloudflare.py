@@ -46,26 +46,20 @@ class Cloudflare(ProviderBase):
         :return:
         """
 
+        pass
+
+    def get_projects(self, project_name: Text = None) -> requests.Response:
+        """
+        This checks and gets the projects available
+
+        :param project_name: Name of the project to get
+        :return: Returns HTTP response
+        """
+
         if not project_name:
-            projects = self._get_projects()
-            if projects.status_code == 200:
-                return projects.json()
-            else:
-                return projects.json()
-
-        project = self._get_project(project_name)
-        if project.status_code == 200:
-            return project.json()
+            response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects",
+                                    headers=self.headers)
         else:
-            return project.json()
-
-    def _get_projects(self):
-
-        response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects",
-                                headers=self.headers)
-        return response
-
-    def _get_project(self, project_name: Text):
-        response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
-                                headers=self.headers)
+            response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
+                                    headers=self.headers)
         return response
