@@ -58,6 +58,6 @@ class Cloudflare(ProviderBase):
         return response.content
 
     def _get_project(self, project_name: Text):
-        response = requests.get(f"accounts/{self.account_id}/pages/projects/{project_name}",
+        response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
                                 headers=self.headers)
         return response.content
