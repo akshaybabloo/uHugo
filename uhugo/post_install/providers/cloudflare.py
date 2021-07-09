@@ -47,17 +47,24 @@ class Cloudflare(ProviderBase):
 
         if not project_name:
             projects = self._get_projects()
-            print(projects)
+            if projects.status_code == 200:
+                return projects.json()
+            else:
+                return projects.json()
 
-        print(self._get_project(project_name))
+        project = self._get_project(project_name)
+        if project.status_code == 200:
+            return project.json()
+        else:
+            return project.json()
 
     def _get_projects(self):
 
         response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects",
                                 headers=self.headers)
-        return response.content
+        return response
 
     def _get_project(self, project_name: Text):
         response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
                                 headers=self.headers)
-        return response.content
+        return response
