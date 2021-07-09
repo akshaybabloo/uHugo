@@ -3,7 +3,7 @@ from typing import Text
 
 import requests
 
-from uhugo.post_install.providers import ProviderBase
+from . import ProviderBase
 
 
 class Cloudflare(ProviderBase):
