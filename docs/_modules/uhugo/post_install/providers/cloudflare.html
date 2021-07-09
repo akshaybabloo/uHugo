@@ -37,7 +37,10 @@
           <div class="body" role="main">
             
   <h1>Source code for uhugo.post_install.providers.cloudflare</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Text</span>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Text</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="kn">from</span> <span class="nn">uhugo.post_install.providers</span> <span class="kn">import</span> <span class="n">ProviderBase</span>
 
@@ -47,13 +50,56 @@
 <span class="sd">    Cloudflare provider</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Cloudflare.update_api"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.update_api">[docs]</a>    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Text</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">email_address</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">account_id</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param api_key: Authentication key for Cloudflare</span>
+<span class="sd">        :param email_address: Registered email address</span>
+<span class="sd">        :param account_id: Cloudflare worker account ID</span>
+<span class="sd">        :raises ValueError: If ``email_address`` and ``account_id`` is not provided</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">account_id</span> <span class="o">=</span> <span class="n">account_id</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">email_address</span><span class="p">:</span>
+            <span class="n">email_address</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CLOUDFLARE_EMAIL&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">account_id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">account_id</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CLOUDFLARE_WORKER_ACCOUNT_ID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">email_address</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">account_id</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;email_address and account_id not provided&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;X-Auth-Email&quot;</span><span class="p">:</span> <span class="n">email_address</span><span class="p">,</span>
+            <span class="s2">&quot;X-Auth-Key&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="Cloudflare.update_api"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.update_api">[docs]</a>    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates Cloudflare Pages environment variable of ``HUGO_VERSION``.</span>
 
-<span class="sd">        :param key: API key</span>
+<span class="sd">        :param project_name: Name of the project to update</span>
 <span class="sd">        :return:</span>
-<span class="sd">        &quot;&quot;&quot;</span></div></div>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">project_name</span><span class="p">:</span>
+            <span class="n">projects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_projects</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">projects</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_project</span><span class="p">(</span><span class="n">project_name</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Cloudflare._get_projects"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare._get_projects">[docs]</a>    <span class="k">def</span> <span class="nf">_get_projects</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://api.cloudflare.com/client/v4/accounts/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">account_id</span><span class="si">}</span><span class="s2">/pages/projects&quot;</span><span class="p">,</span>
+                                <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span></div>
+
+<div class="viewcode-block" id="Cloudflare._get_project"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare._get_project">[docs]</a>    <span class="k">def</span> <span class="nf">_get_project</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;accounts/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">account_id</span><span class="si">}</span><span class="s2">/pages/projects/</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                                <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span></div></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -93,7 +139,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
     </div>
   </body>
 </html>
