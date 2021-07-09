@@ -14,6 +14,7 @@ from .install import install_hugo
 from .post_install.detect_providers import check_hugo_file, check_fs
 
 log = logging.getLogger(__name__)
+console = Console()
 
 
 @click.group(name="uhugo",
@@ -35,8 +36,6 @@ def cli(ctx: click.core.Context, debug: bool):
 @click.option('--version', '-v', 'ver', default=None, help="Hugo version to download")
 @click.option('--force', is_flag=True, default=False, help="Reinstall Hugo")
 def install(ver: Text, force: bool):
-    console = Console()
-
     hugo = check_hugo()
     if hugo.exists and not force:
         click.echo(console.print("Hugo has already been installed. Use 'uhugo update' to update.",
@@ -64,8 +63,6 @@ def install(ver: Text, force: bool):
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", default=None, help="Updates to a specified version")
 def update(to: Text):
-    console = Console()
-
     hugo = check_hugo()
     if not hugo.exists:
         click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.",
@@ -89,7 +86,7 @@ def update(to: Text):
 
     console.print("\nHugo updated! :tada:\n", style='green bold')
 
-    with console.status("Updating providers") as s:
+    with console.status("Checking providers") as s:
         provider = check_hugo_file()
         if provider.name is None:
             return
