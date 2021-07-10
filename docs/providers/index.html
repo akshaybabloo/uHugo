@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Providers &#8212; uHugo 0.0.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cloudflare" href="cloudflare.html" />
+    <link rel="prev" title="Commands" href="../commands.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudflare.html" title="Cloudflare"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../commands.html" title="Commands"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Providers</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="providers">
+<h1>Providers<a class="headerlink" href="#providers" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.0.3.</span></p>
+</div>
+<p>Providers are basically cloud providers that host your static website. uHugo comes with three providers.
+These providers can be set in Hugo’s <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">config.toml</span></code>, using the following configurations</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Y29uZmlnLnRvbWw=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tab" tabindex="0">config.toml</button><button aria-controls="panel-0-Y29uZmlnLnlhbWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tab" tabindex="-1">config.yaml</button></div><div aria-labelledby="tab-0-Y29uZmlnLnRvbWw=" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tabpanel" tabindex="0"><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[uhugo]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;&lt;name of the provider&gt;&quot;</span>
+<span class="n">email_address</span> <span class="o">=</span> <span class="s">&quot;&lt;email address of the user authenticated&gt;&quot;</span> <span class="c1"># part of cloudflare</span>
+<span class="n">account_id</span> <span class="o">=</span> <span class="s">&quot;&lt;Cloudflare workers account ID&gt;&quot;</span> <span class="c1"># part of cloudflare</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s">&quot;&lt;authentication key&gt;&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s">&quot;&lt;name of the configuration file&gt;&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Y29uZmlnLnlhbWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">uhugo</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;name of the provider&gt;</span>
+    <span class="nt">email_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;email address of the user authenticated&gt;</span>
+    <span class="nt">account_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Cloudflare workers account ID&gt;</span>
+    <span class="nt">api_key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;authentication key&gt;</span>
+    <span class="nt">file_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;name of the configuration file&gt;</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A configuration with <code class="docutils literal notranslate"><span class="pre">env</span></code> values tells uHugo to search in environment value. Internally <code class="docutils literal notranslate"><span class="pre">api_key</span> <span class="pre">=</span> <span class="pre">&quot;env&quot;</span></code>, will search for <code class="docutils literal notranslate"><span class="pre">os.environ[&quot;api_key&quot;]</span></code></p>
+</div>
+<div class="section" id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
+<p>Certain properties in the above configuration are optional, this depends on the cloud providers.</p>
+<div class="section" id="name-property">
+<h3>Name Property<a class="headerlink" href="#name-property" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> property describes the type of cloud providers to choose. Currently, uHugo supports the following cloud providers:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cloudflare.html">Cloudflare</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="api-key-property">
+<span id="id1"></span><h3>API Key Property<a class="headerlink" href="#api-key-property" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">api_key</span></code> is the authentication token provided by the cloud provider. This property is required when using <a class="reference internal" href="cloudflare.html"><span class="doc">Cloudflare</span></a>.</p>
+</div>
+<div class="section" id="file-name-property">
+<h3>File Name Property<a class="headerlink" href="#file-name-property" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">file_name</span></code> property is the name of the configuration file. This property is required for Netlify and Vercel (can be left blank if <a class="reference internal" href="#api-key-property"><span class="std std-ref">API Key Property</span></a> is provided).</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Providers</a><ul>
+<li><a class="reference internal" href="#definitions">Definitions</a><ul>
+<li><a class="reference internal" href="#name-property">Name Property</a></li>
+<li><a class="reference internal" href="#api-key-property">API Key Property</a></li>
+<li><a class="reference internal" href="#file-name-property">File Name Property</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../commands.html"
+                        title="previous chapter">Commands</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cloudflare.html"
+                        title="next chapter">Cloudflare</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/providers/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cloudflare.html" title="Cloudflare"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../commands.html" title="Commands"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Providers</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Akshay Raj Gollahalli.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+    </div>
+  </body>
+</html>

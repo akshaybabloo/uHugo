@@ -135,3 +135,6 @@ dmypy.json
 /docs/doctrees/
 
 .vscode/
+config.toml
+netlify.yaml
+vercel.json

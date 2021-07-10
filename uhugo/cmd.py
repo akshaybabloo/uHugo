@@ -1,11 +1,12 @@
 import logging
 import os
-from typing import Text
+from typing import Text, Union
 
 import click
 from packaging import version
 from rich.console import Console
 from rich.panel import Panel
+from rich.prompt import Prompt
 
 from . import __version__
 from .checks import check_hugo, get_latest_version_api
@@ -14,6 +15,7 @@ from .install import install_hugo
 from .post_install.detect_providers import check_hugo_file, check_fs
 
 log = logging.getLogger(__name__)
+console = Console()
 
 
 @click.group(name="uhugo",
@@ -35,8 +37,6 @@ def cli(ctx: click.core.Context, debug: bool):
 @click.option('--version', '-v', 'ver', default=None, help="Hugo version to download")
 @click.option('--force', is_flag=True, default=False, help="Reinstall Hugo")
 def install(ver: Text, force: bool):
-    console = Console()
-
     hugo = check_hugo()
     if hugo.exists and not force:
         click.echo(console.print("Hugo has already been installed. Use 'uhugo update' to update.",
@@ -63,9 +63,8 @@ def install(ver: Text, force: bool):
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", default=None, help="Updates to a specified version")
-def update(to: Text):
-    console = Console()
-
+@click.option("--project_name", default=None, help="Cloudflare project name")
+def update(to: Union[Text, None], project_name: Union[Text, None]):
     hugo = check_hugo()
     if not hugo.exists:
         click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.",
@@ -89,16 +88,38 @@ def update(to: Text):
 
     console.print("\nHugo updated! :tada:\n", style='green bold')
 
-    with console.status("Updating providers") as s:
+    with console.status("Checking providers") as s:
         provider = check_hugo_file()
-        if provider.name is None:
-            return
-
-        provider = check_fs()
-        if not provider:
-            return
+        if not provider.name:
+            provider = check_fs()
+            if not provider.name:
+                return
 
         s.update(f"{provider.name.title()} found")
+
+        # checks for "env" value and sets the appropriate key with the environment value
+        for key, val in provider.dict().items():
+            if val == "env":
+                setattr(provider, key, os.environ[key])
+
+        if provider.name == "cloudflare":
+            from .post_install.providers.cloudflare import Cloudflare
+            cf = Cloudflare(provider.api_key, provider.email_address, provider.account_id, _ver)
+            projects = cf.get_projects(project_name).json()
+            if projects['success'] and isinstance(projects['result'], list):
+                names = [name['name'] for name in projects['result']]
+                name = Prompt.ask("Enter project name", choices=names)
+            elif not projects['success']:
+                console.print("There was an error fetching your Cloudflare project", style="bold red")
+                log.debug(projects)
+                exit(1)
+
+            response = cf.update_api(name).json()
+            if not response['success']:
+                console.print("There was an error updating your Cloudflare environment")
+                log.debug(response)
+                exit(1)
+            console.print(f"\nCloudflare updated with Hugo v{_ver} :tada:", style="green bold")
 
 
 def main():
