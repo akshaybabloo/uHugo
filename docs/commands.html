@@ -4,18 +4,18 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Commands &#8212; uHugo 0.0.2 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Providers" href="providers.html" />
+    <link rel="next" title="Providers" href="providers/index.html" />
     <link rel="prev" title="Welcome to uHugo’s documentation!" href="index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -28,7 +28,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="providers.html" title="Providers"
+          <a href="providers/index.html" title="Providers"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
@@ -43,9 +43,48 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="commands">
+  <div class="section" id="commands">
 <h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
-</section>
+<p>uHugo is a CLI that comes with two commands</p>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p><cite>uhugo install</cite> command can be used to install or force install a latest Hugo binary. If a binary already exists and you wish to reinstall then you can use
+<code class="docutils literal notranslate"><span class="pre">--force</span></code> flag.</p>
+<div class="section" id="install-help">
+<h3>Install Help<a class="headerlink" href="#install-help" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo install --help
+Usage: uhugo install <span class="o">[</span>OPTIONS<span class="o">]</span>
+
+  Install latest Hugo binary files
+
+Options:
+  -v, --version TEXT  Hugo version to download
+  --force             Reinstall Hugo
+  --help              Show this message and exit.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">uhugo</span> <span class="pre">update</span></code> can be used to update an existing binary. This command can also be used to downgrade Hugo version using the <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> flag.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--project_name</span> <span class="pre">&lt;project</span> <span class="pre">name&gt;</span></code> can be used in <a class="reference internal" href="providers/cloudflare.html"><span class="doc">Cloudflare</span></a> to update the environment variables.</p>
+<div class="section" id="update-help">
+<h3>Update Help<a class="headerlink" href="#update-help" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo update --help
+Usage: uhugo update <span class="o">[</span>OPTIONS<span class="o">]</span>
+
+Updates Hugo binary files and any associated configurations
+
+Options:
+--to TEXT            Updates to a specified version
+--project_name TEXT  Cloudflare project name
+--help               Show this message and exit.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -54,11 +93,26 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Commands</a><ul>
+<li><a class="reference internal" href="#install">Install</a><ul>
+<li><a class="reference internal" href="#install-help">Install Help</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#update">Update</a><ul>
+<li><a class="reference internal" href="#update-help">Update Help</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to uHugo’s documentation!</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="providers.html"
+  <p class="topless"><a href="providers/index.html"
                         title="next chapter">Providers</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -91,7 +145,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="providers.html" title="Providers"
+          <a href="providers/index.html" title="Providers"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
