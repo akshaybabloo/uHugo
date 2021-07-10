@@ -37,7 +37,7 @@
             
   <h1>Source code for uhugo.post_install.providers</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Text</span><span class="p">,</span> <span class="n">Any</span>
 
 
 <div class="viewcode-block" id="ProviderBase"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase">[docs]</a><span class="k">class</span> <span class="nc">ProviderBase</span><span class="p">:</span>
@@ -68,18 +68,28 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hugo_version</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;api_ky, config_path or hugo_version not set&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ProviderBase.update_api"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.update_api">[docs]</a>    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ProviderBase.update_api"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.update_api">[docs]</a>    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates an API</span>
+
+<span class="sd">        :param project_name: Name of the project to update</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="ProviderBase.update_file"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.update_file">[docs]</a>    <span class="k">def</span> <span class="nf">update_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="ProviderBase.update_file"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.update_file">[docs]</a>    <span class="k">def</span> <span class="nf">update_file</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates a configuration file</span>
 
 <span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="ProviderBase.get_projects"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.get_projects">[docs]</a>    <span class="k">def</span> <span class="nf">get_projects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks and gets the current project</span>
+
+<span class="sd">        :param project_name: Name of the project to update</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div></div>
 </pre></div>
@@ -120,7 +130,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
     </div>
   </body>
 </html>
