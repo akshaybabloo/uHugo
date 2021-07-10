@@ -30,7 +30,7 @@ class ProviderBase:
         if not self.api_key and not self.path and not self.hugo_version:
             raise ValueError("api_ky, config_path or hugo_version not set")
 
-    def update_api(self, project_name: Text = None) -> Any:
+    def update_api(self, project_name: Text) -> Any:
         """
         Updates an API
 
