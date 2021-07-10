@@ -1,4 +1,3 @@
-from pathlib import Path
 from typing import Text
 
 from uhugo.post_install.providers import ProviderBase
@@ -9,11 +8,11 @@ class Vercel(ProviderBase):
     Vercel provider
     """
 
-    def update_file(self, path: Path):
+    def update_config_file(self, file_name: Text):
         """
-        Updates ``vercel.yaml`` file with Hugo's version
+        Updates ``vercel.json`` file with Hugo's version
 
-        :param path: Path of ``netlify.yaml``
+        :param file_name: Path of ``vercel.json``
         :return:
         """
         pass

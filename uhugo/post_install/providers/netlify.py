@@ -1,4 +1,4 @@
-from pathlib import Path
+from typing import Text
 
 from . import ProviderBase
 
@@ -8,11 +8,11 @@ class Netlify(ProviderBase):
     Netlify provider
     """
 
-    def update_file(self, path: Path):
+    def update_config_file(self, file_name: Text):
         """
         Updates ``netlify.yaml`` file with Hugo's version
 
-        :param path: Path of ``netlify.yaml``
+        :param file_name: Path of ``netlify.yaml``
         :return:
         """
         pass
