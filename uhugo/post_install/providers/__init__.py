@@ -39,7 +39,7 @@ class ProviderBase:
         """
         pass
 
-    def update_file(self) -> Any:
+    def update_config_file(self, file_name: Text) -> Any:
         """
         Updates a configuration file
 
