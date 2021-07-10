@@ -42,7 +42,7 @@ You can test it by
    :caption: Contents:
 
    commands
-   providers
+   providers/index
    reference/index
 
 
