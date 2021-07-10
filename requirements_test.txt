@@ -3,3 +3,5 @@ pytest-mock
 requests-mock
 pytest-subprocess
 pytest-cov
+codecov
+coverage
