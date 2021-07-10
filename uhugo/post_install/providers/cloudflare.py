@@ -1,3 +1,4 @@
+import json
 import os
 from typing import Text
 
@@ -38,7 +39,7 @@ class Cloudflare(ProviderBase):
             "X-Auth-Key": self.api_key
         }
 
-    def update_api(self, project_name: Text = None):
+    def update_api(self, project_name: Text) -> requests.Response:
         """
         Updates Cloudflare Pages environment variable of ``HUGO_VERSION``.
 
@@ -46,7 +47,30 @@ class Cloudflare(ProviderBase):
         :return:
         """
 
-        pass
+        data = {
+            "deployment_configs": {
+                "preview": {
+                    "env_vars": {
+                        "delete_this_env_var": None,
+                        "HUGO_VERSION": {
+                            "value": self.hugo_version
+                        }
+                    }
+                },
+                "production": {
+                    "env_vars": {
+                        "delete_this_env_var": None,
+                        "HUGO_VERSION": {
+                            "value": self.hugo_version
+                        }
+                    }
+                }
+            }
+        }
+
+        response = requests.patch(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
+                                  json=data, headers=self.headers)
+        return response
 
     def get_projects(self, project_name: Text = None) -> requests.Response:
         """
