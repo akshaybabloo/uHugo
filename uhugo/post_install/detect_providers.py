@@ -13,6 +13,7 @@ class Provider(BaseModel):
     This holds the information about the provider
     """
     name: Union[str, None] = None
+    project: Union[str, None] = None
     file_name: Union[str, None] = None
     api_key: Union[str, None] = None
     account_id: Union[str, None] = None
