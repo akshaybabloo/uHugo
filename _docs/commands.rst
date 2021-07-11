@@ -29,8 +29,6 @@ Update
 
 ``uhugo update`` can be used to update an existing binary. This command can also be used to downgrade Hugo version using the ``--to <version number>`` flag.
 
-``--project_name <project name>`` can be used in :doc:`../providers/cloudflare` to update the environment variables.
-
 Update Help
 ~~~~~~~~~~~
 
@@ -43,5 +41,4 @@ Update Help
 
     Options:
     --to TEXT            Updates to a specified version
-    --project_name TEXT  Cloudflare project name
-    --help               Show this message and exit. 
+    --help               Show this message and exit.
