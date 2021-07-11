@@ -14,6 +14,7 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
 
         [uhugo]
         name = "cloudflare"
+        project = "some-name"
         email_address = "env"
         account_id = "env"
         api_key = "env"
@@ -22,6 +23,7 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
 
         uhugo:
             name: cloudflare
+            project: some-name
             email_address: env
             account_id: env
             api_key: env

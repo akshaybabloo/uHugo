@@ -63,8 +63,7 @@ def install(ver: Text, force: bool):
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", default=None, help="Updates to a specified version")
-@click.option("--project_name", default=None, help="Cloudflare project name")
-def update(to: Union[Text, None], project_name: Union[Text, None]):
+def update(to: Union[Text, None]):
     hugo = check_hugo()
     if not hugo.exists:
         click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.",
@@ -105,7 +104,7 @@ def update(to: Union[Text, None], project_name: Union[Text, None]):
         if provider.name == "cloudflare":
             from .post_install.providers.cloudflare import Cloudflare
             cf = Cloudflare(provider.api_key, provider.email_address, provider.account_id, _ver)
-            projects = cf.get_projects(project_name).json()
+            projects = cf.get_projects(provider.project).json()
             if projects['success'] and isinstance(projects['result'], list):
                 names = [name['name'] for name in projects['result']]
                 name = Prompt.ask("Enter project name", choices=names)
@@ -113,6 +112,8 @@ def update(to: Union[Text, None], project_name: Union[Text, None]):
                 console.print("There was an error fetching your Cloudflare project", style="bold red")
                 log.debug(projects)
                 exit(1)
+            else:
+                name = provider.project
 
             response = cf.update_api(name).json()
             if not response['success']:

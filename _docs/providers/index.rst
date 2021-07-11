@@ -12,6 +12,7 @@ These providers can be set in Hugo's ``config.yaml`` or ``config.toml``, using t
 
         [uhugo]
         name = "<name of the provider>"
+        project = "<project name or ID>"
         email_address = "<email address of the user authenticated>" # part of cloudflare
         account_id = "<Cloudflare workers account ID>" # part of cloudflare
         api_key = "<authentication key>"
@@ -21,6 +22,7 @@ These providers can be set in Hugo's ``config.yaml`` or ``config.toml``, using t
 
         uhugo:
             name: <name of the provider>
+            project = <project name or ID>
             email_address: <email address of the user authenticated>
             account_id: <Cloudflare workers account ID>
             api_key: <authentication key>

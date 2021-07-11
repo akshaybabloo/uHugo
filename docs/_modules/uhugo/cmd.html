@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.cmd &#8212; uHugo 0.0.4 documentation</title>
+    <title>uhugo.cmd &#8212; uHugo 0.0.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
@@ -26,7 +26,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.cmd</a></li> 
       </ul>
@@ -103,8 +103,7 @@
 
 <span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Updates Hugo binary files and any associated configurations&quot;</span><span class="p">)</span>
 <span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--to&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Updates to a specified version&quot;</span><span class="p">)</span>
-<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--project_name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Cloudflare project name&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">]):</span>
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">]):</span>
     <span class="n">hugo</span> <span class="o">=</span> <span class="n">check_hugo</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">hugo</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
         <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Hugo is not installed. Use &#39;uhugo install&#39; to install.&quot;</span><span class="p">,</span>
@@ -145,7 +144,7 @@
         <span class="k">if</span> <span class="n">provider</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;cloudflare&quot;</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">.post_install.providers.cloudflare</span> <span class="kn">import</span> <span class="n">Cloudflare</span>
             <span class="n">cf</span> <span class="o">=</span> <span class="n">Cloudflare</span><span class="p">(</span><span class="n">provider</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="n">provider</span><span class="o">.</span><span class="n">email_address</span><span class="p">,</span> <span class="n">provider</span><span class="o">.</span><span class="n">account_id</span><span class="p">,</span> <span class="n">_ver</span><span class="p">)</span>
-            <span class="n">projects</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_projects</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">projects</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_projects</span><span class="p">(</span><span class="n">provider</span><span class="o">.</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">projects</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">projects</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">projects</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]]</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter project name&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
@@ -153,6 +152,8 @@
                 <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;There was an error fetching your Cloudflare project&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold red&quot;</span><span class="p">)</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">projects</span><span class="p">)</span>
                 <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">project</span>
 
             <span class="n">response</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">update_api</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]:</span>
@@ -195,7 +196,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.cmd</a></li> 
       </ul>
