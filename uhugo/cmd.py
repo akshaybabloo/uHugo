@@ -99,7 +99,12 @@ def update(to: Union[Text, None]):
         # checks for "env" value and sets the appropriate key with the environment value
         for key, val in provider.dict().items():
             if val == "env":
-                setattr(provider, key, os.environ[key])
+                try:
+                    setattr(provider, key, os.environ[key])
+                except KeyError as e:
+                    log.debug(e)
+                    console.print("Make sure environment variables are set", style="bold red")
+                    exit(1)
 
         if provider.name == "cloudflare":
             from .post_install.providers.cloudflare import Cloudflare
@@ -107,6 +112,7 @@ def update(to: Union[Text, None]):
             projects = cf.get_projects(provider.project).json()
             if projects['success'] and isinstance(projects['result'], list):
                 names = [name['name'] for name in projects['result']]
+                print(names)
                 name = Prompt.ask("Enter project name", choices=names)
             elif not projects['success']:
                 console.print("There was an error fetching your Cloudflare project", style="bold red")
