@@ -54,3 +54,11 @@ class ProviderBase:
         :param project_name: Name of the project to update
         """
         pass
+
+    def current_version(self, project_name: Text = None) -> Any:
+        """
+        Gets the current Hugo version
+
+        :param project_name: Name of the project to check from
+        """
+        pass

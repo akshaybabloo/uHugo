@@ -121,6 +121,10 @@ def update(to: Union[Text, None]):
             else:
                 name = provider.project
 
+            current_version = cf.current_version(name)
+            if current_version:
+                console.print(f"Current Hugo version in Cloudflare: v{current_version}")
+
             response = cf.update_api(name).json()
             if not response['success']:
                 console.print("There was an error updating your Cloudflare environment")
