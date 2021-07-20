@@ -1,9 +1,12 @@
+import logging
 import os
-from typing import Text
+from typing import Text, Union
 
 import requests
 
 from . import ProviderBase
+
+log = logging.getLogger(__name__)
 
 
 class Cloudflare(ProviderBase):
@@ -86,3 +89,19 @@ class Cloudflare(ProviderBase):
             response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
                                     headers=self.headers)
         return response
+
+    def current_version(self, project_name: Text = None) -> Union[str, None]:
+        """
+        Gets the current Hugo version
+
+        :param project_name: Name of the project to check from
+        """
+        response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
+                                headers=self.headers)
+
+        data = response.json()
+        try:
+            return data['result']['deployment_configs']['production']['env_vars']['HUGO_VERSION']['value']
+        except KeyError as e:
+            log.debug(e)
+            return None

@@ -85,7 +85,7 @@ def update(to: Union[Text, None]):
     with console.status(f"Installing Hugo {_ver}", spinner="dots"):
         install_hugo(download_path)
 
-    console.print("\nHugo updated! :tada:\n", style='green bold')
+    console.print("\nLocal Hugo updated! :tada:\n", style='green bold')
 
     with console.status("Checking providers") as s:
         provider = check_hugo_file()
@@ -99,7 +99,12 @@ def update(to: Union[Text, None]):
         # checks for "env" value and sets the appropriate key with the environment value
         for key, val in provider.dict().items():
             if val == "env":
-                setattr(provider, key, os.environ[key])
+                try:
+                    setattr(provider, key, os.environ[key])
+                except KeyError as e:
+                    log.debug(e)
+                    console.print("Make sure environment variables are set", style="bold red")
+                    exit(1)
 
         if provider.name == "cloudflare":
             from .post_install.providers.cloudflare import Cloudflare
@@ -107,6 +112,7 @@ def update(to: Union[Text, None]):
             projects = cf.get_projects(provider.project).json()
             if projects['success'] and isinstance(projects['result'], list):
                 names = [name['name'] for name in projects['result']]
+                print(names)
                 name = Prompt.ask("Enter project name", choices=names)
             elif not projects['success']:
                 console.print("There was an error fetching your Cloudflare project", style="bold red")
@@ -114,6 +120,10 @@ def update(to: Union[Text, None]):
                 exit(1)
             else:
                 name = provider.project
+
+            current_version = cf.current_version(name)
+            if current_version:
+                console.print(f"Current Hugo version in Cloudflare: v{current_version}")
 
             response = cf.update_api(name).json()
             if not response['success']:
