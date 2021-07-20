@@ -85,7 +85,7 @@ def update(to: Union[Text, None]):
     with console.status(f"Installing Hugo {_ver}", spinner="dots"):
         install_hugo(download_path)
 
-    console.print("\nHugo updated! :tada:\n", style='green bold')
+    console.print("\nLocal Hugo updated! :tada:\n", style='green bold')
 
     with console.status("Checking providers") as s:
         provider = check_hugo_file()
