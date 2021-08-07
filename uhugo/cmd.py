@@ -63,7 +63,9 @@ def install(ver: Text, force: bool):
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", default=None, help="Updates to a specified version")
-def update(to: Union[Text, None]):
+@click.option("--only-hugo", is_flag=True, help="Updates only Hugo binary while ignoring providers")
+@click.option("--only-cloud", is_flag=True, help="Updates only cloud providers while ignoring Hugo")
+def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool):
     hugo = check_hugo()
     if not hugo.exists:
         click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.",
@@ -80,12 +82,18 @@ def update(to: Union[Text, None]):
     if not to:
         console.print(Panel.fit(f"New version available, v{hugo.version} -> v{_ver}", title=f"Hugo v{_ver}"), style="green")
 
-    download_path = download_hugo_zip(_ver)
+    if not only_cloud:
 
-    with console.status(f"Installing Hugo {_ver}", spinner="dots"):
-        install_hugo(download_path)
+        download_path = download_hugo_zip(_ver)
 
-    console.print("\nLocal Hugo updated! :tada:\n", style='green bold')
+        with console.status(f"Installing Hugo {_ver}", spinner="dots"):
+            install_hugo(download_path)
+
+        console.print("\nLocal Hugo updated! :tada:\n", style='green bold')
+
+    # ignore cloud provider updates if --only-hugo flag
+    if only_hugo:
+        return
 
     with console.status("Checking providers") as s:
         provider = check_hugo_file()
