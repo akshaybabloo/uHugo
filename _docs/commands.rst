@@ -48,12 +48,12 @@ Update Help
 --to Flag
 ~~~~~~~~~
 
-.. versionadded:: 0.0.8
-
 ``--to <version number>`` can be used to install a specific version of Hugo binary
 
 --only-hugo Flag
 ~~~~~~~~~~~~~~~~
+
+.. versionadded:: 0.0.8
 
 ``--only-hugo`` is a binary flag. It can be used when you only want to update Hugo binary and ignore updating cloud provider
 
