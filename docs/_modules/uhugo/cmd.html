@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.cmd &#8212; uHugo 0.0.7 documentation</title>
+    <title>uhugo.cmd &#8212; uHugo 0.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
@@ -26,7 +26,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.8 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.cmd</a></li> 
       </ul>
@@ -103,7 +103,9 @@
 
 <span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s2">&quot;Updates Hugo binary files and any associated configurations&quot;</span><span class="p">)</span>
 <span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--to&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Updates to a specified version&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">]):</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--only-hugo&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Updates only Hugo binary while ignoring providers&quot;</span><span class="p">)</span>
+<span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;--only-cloud&quot;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Updates only cloud providers while ignoring Hugo&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Text</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">only_hugo</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">only_cloud</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
     <span class="n">hugo</span> <span class="o">=</span> <span class="n">check_hugo</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">hugo</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
         <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Hugo is not installed. Use &#39;uhugo install&#39; to install.&quot;</span><span class="p">,</span>
@@ -120,12 +122,18 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">to</span><span class="p">:</span>
         <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Panel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New version available, v</span><span class="si">{</span><span class="n">hugo</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2"> -&gt; v</span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Hugo v</span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
 
-    <span class="n">download_path</span> <span class="o">=</span> <span class="n">download_hugo_zip</span><span class="p">(</span><span class="n">_ver</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">only_cloud</span><span class="p">:</span>
 
-    <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Installing Hugo </span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">spinner</span><span class="o">=</span><span class="s2">&quot;dots&quot;</span><span class="p">):</span>
-        <span class="n">install_hugo</span><span class="p">(</span><span class="n">download_path</span><span class="p">)</span>
+        <span class="n">download_path</span> <span class="o">=</span> <span class="n">download_hugo_zip</span><span class="p">(</span><span class="n">_ver</span><span class="p">)</span>
 
-    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Local Hugo updated! :tada:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;green bold&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Installing Hugo </span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">spinner</span><span class="o">=</span><span class="s2">&quot;dots&quot;</span><span class="p">):</span>
+            <span class="n">install_hugo</span><span class="p">(</span><span class="n">download_path</span><span class="p">)</span>
+
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Local Hugo updated! :tada:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;green bold&#39;</span><span class="p">)</span>
+
+    <span class="c1"># ignore cloud provider updates if --only-hugo flag</span>
+    <span class="k">if</span> <span class="n">only_hugo</span><span class="p">:</span>
+        <span class="k">return</span>
 
     <span class="k">with</span> <span class="n">console</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;Checking providers&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
         <span class="n">provider</span> <span class="o">=</span> <span class="n">check_hugo_file</span><span class="p">()</span>
@@ -206,7 +214,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.0.8 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.cmd</a></li> 
       </ul>

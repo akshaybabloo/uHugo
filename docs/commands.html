@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Commands &#8212; uHugo 0.0.7 documentation</title>
+    <title>Commands &#8212; uHugo 0.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
@@ -33,7 +33,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.0.8 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>  
@@ -73,13 +73,33 @@ Options:
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo update --help
 Usage: uhugo update <span class="o">[</span>OPTIONS<span class="o">]</span>
 
-Updates Hugo binary files and any associated configurations
+  Updates Hugo binary files and any associated configurations
 
 Options:
---to TEXT            Updates to a specified version
---help               Show this message and exit.
+  --to TEXT     Updates to a specified version
+  --only-hugo   Updates only Hugo binary <span class="k">while</span> ignoring providers
+  --only-cloud  Updates only cloud providers <span class="k">while</span> ignoring Hugo
+  --help        Show this message and exit.
 </pre></div>
 </div>
+</div>
+<div class="section" id="to-flag">
+<h3>–to Flag<a class="headerlink" href="#to-flag" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.0.8.</span></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> can be used to install a specific version of Hugo binary</p>
+</div>
+<div class="section" id="only-hugo-flag">
+<h3>–only-hugo Flag<a class="headerlink" href="#only-hugo-flag" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--only-hugo</span></code> is a binary flag. It can be used when you only want to update Hugo binary and ignore updating cloud provider</p>
+</div>
+<div class="section" id="only-cloud-flag">
+<h3>–only-cloud Flag<a class="headerlink" href="#only-cloud-flag" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.0.8.</span></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">only-cloud</span></code> is a binary flag. It can be used when you only want to update cloud provider and ignore updating Hugo binary</p>
 </div>
 </div>
 </div>
@@ -100,6 +120,9 @@ Options:
 </li>
 <li><a class="reference internal" href="#update">Update</a><ul>
 <li><a class="reference internal" href="#update-help">Update Help</a></li>
+<li><a class="reference internal" href="#to-flag">–to Flag</a></li>
+<li><a class="reference internal" href="#only-hugo-flag">–only-hugo Flag</a></li>
+<li><a class="reference internal" href="#only-cloud-flag">–only-cloud Flag</a></li>
 </ul>
 </li>
 </ul>
@@ -148,7 +171,7 @@ Options:
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.0.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.0.8 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>
