@@ -41,7 +41,7 @@ def install(ver: Text, force: bool):
     if hugo.exists and not force:
         click.echo(console.print("Hugo has already been installed. Use 'uhugo update' to update.",
                                  style="red"))
-        exit(0)
+        return 
 
     if force:
         log.debug(f"Deleting existing Hugo at {hugo.path}")
@@ -65,19 +65,19 @@ def install(ver: Text, force: bool):
 @click.option("--to", default=None, help="Updates to a specified version")
 @click.option("--only-hugo", is_flag=True, help="Updates only Hugo binary while ignoring providers")
 @click.option("--only-cloud", is_flag=True, help="Updates only cloud providers while ignoring Hugo")
-def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool):
+def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
     hugo = check_hugo()
     if not hugo.exists:
         click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.",
                                  style="red"))
-        exit(0)
+        return
 
     with console.status("Fetching latest version", spinner="dots"):
         _ver = get_latest_version_api(to)
 
     if (hugo.version >= version.Version(_ver)) and not to:
         console.print("Hugo is up to date :tada:", style="green")
-        exit(0)
+        return
 
     if not to:
         console.print(Panel.fit(f"New version available, v{hugo.version} -> v{_ver}", title=f"Hugo v{_ver}"), style="green")
