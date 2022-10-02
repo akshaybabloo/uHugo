@@ -74,6 +74,7 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
     with console.status("Fetching latest version", spinner="dots"):
         _ver = get_latest_version_api(to)
+        logging.debug(f"Latest version is {_ver}")
 
     if (hugo.version >= version.Version(_ver)) and not to:
         console.print("Hugo is up to date :tada:", style="green")
@@ -91,7 +92,7 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
         console.print("\nLocal Hugo updated! :tada:\n", style='green bold')
 
-    # ignore cloud provider updates if --only-hugo flag
+    # ignore cloud provider updates with --only-hugo flag
     if only_hugo:
         return
 
