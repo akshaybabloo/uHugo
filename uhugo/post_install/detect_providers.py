@@ -35,8 +35,12 @@ def check_hugo_file() -> Provider:
             return Provider()
         else:
             import yaml
+            try:
+                from yaml import CLoader as Loader, CDumper as Dumper
+            except ImportError:
+                from yaml import Loader, Dumper
             with open(path) as f:
-                data = yaml.load(f)
+                data = yaml.load(f, Loader=Loader)
     else:
         import toml
         with open(path) as f:
