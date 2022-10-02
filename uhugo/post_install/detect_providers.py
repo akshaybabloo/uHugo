@@ -49,7 +49,7 @@ def check_hugo_file() -> Provider:
     return Provider(**data['uhugo'])
 
 
-def check_fs() -> Union[Provider, None]:
+def check_providers_fs() -> Union[Provider, None]:
     """
     Checks file system for any providers that matches the list
 
