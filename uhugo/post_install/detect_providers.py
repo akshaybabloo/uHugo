@@ -63,4 +63,4 @@ def check_fs() -> Union[Provider, None]:
         if path.exists():
             return Provider(**{"name": path.name.split(".")[0], "path": path.__str__()})
 
-    return None
+    return Provider()
