@@ -1,18 +1,21 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.post_install.providers.netlify &#8212; uHugo 0.0.9 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>uhugo.post_install.providers.netlify &#8212; uHugo 0.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="uhugo.post_install.providers.vercel" href="vercel.html" />
@@ -33,7 +36,7 @@
         <li class="right" >
           <a href="cloudflare.html" title="uhugo.post_install.providers.cloudflare"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Reference</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.post_install.providers.netlify</a></li> 
       </ul>
@@ -44,14 +47,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="uhugo-post-install-providers-netlify">
-<h1>uhugo.post_install.providers.netlify<a class="headerlink" href="#uhugo-post-install-providers-netlify" title="Permalink to this headline">¶</a></h1>
+  <section id="uhugo-post-install-providers-netlify">
+<h1>uhugo.post_install.providers.netlify<a class="headerlink" href="#uhugo-post-install-providers-netlify" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="uhugo.post_install.providers.netlify.Netlify">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">uhugo.post_install.providers.netlify.</span></span><span class="sig-name descname"><span class="pre">Netlify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hugo_version</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uhugo/post_install/providers/netlify.html#Netlify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.post_install.providers.netlify.Netlify" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">uhugo.post_install.providers.netlify.</span></span><span class="sig-name descname"><span class="pre">Netlify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hugo_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uhugo/post_install/providers/netlify.html#Netlify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.post_install.providers.netlify.Netlify" title="Permalink to this definition">¶</a></dt>
 <dd><p>Netlify provider</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>hugo_version</strong> – New Hugo version</p></li>
 <li><p><strong>api_key</strong> – Authentication key for providers</p></li>
@@ -61,13 +64,13 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="uhugo.post_install.providers.netlify.Netlify.update_config_file">
-<span class="sig-name descname"><span class="pre">update_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uhugo/post_install/providers/netlify.html#Netlify.update_config_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.post_install.providers.netlify.Netlify.update_config_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update_config_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/uhugo/post_install/providers/netlify.html#Netlify.update_config_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#uhugo.post_install.providers.netlify.Netlify.update_config_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates <code class="docutils literal notranslate"><span class="pre">netlify.yaml</span></code> file with Hugo’s version</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file_name</strong> – Path of <code class="docutils literal notranslate"><span class="pre">netlify.yaml</span></code></p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
 </dd>
 </dl>
@@ -75,7 +78,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -84,12 +87,29 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="cloudflare.html"
-                        title="previous chapter">uhugo.post_install.providers.cloudflare</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="vercel.html"
-                        title="next chapter">uhugo.post_install.providers.vercel</a></p>
+  <div>
+    <h3><a href="../../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">uhugo.post_install.providers.netlify</a><ul>
+<li><a class="reference internal" href="#uhugo.post_install.providers.netlify.Netlify"><code class="docutils literal notranslate"><span class="pre">Netlify</span></code></a><ul>
+<li><a class="reference internal" href="#uhugo.post_install.providers.netlify.Netlify.update_config_file"><code class="docutils literal notranslate"><span class="pre">Netlify.update_config_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="cloudflare.html"
+                          title="previous chapter">uhugo.post_install.providers.cloudflare</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="vercel.html"
+                          title="next chapter">uhugo.post_install.providers.vercel</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -101,12 +121,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -126,14 +146,14 @@
         <li class="right" >
           <a href="cloudflare.html" title="uhugo.post_install.providers.cloudflare"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Reference</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.post_install.providers.netlify</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
     </div>
   </body>
 </html>

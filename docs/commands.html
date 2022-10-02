@@ -1,18 +1,21 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Commands &#8212; uHugo 0.0.9 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Commands &#8212; uHugo 0.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Providers" href="providers/index.html" />
@@ -33,7 +36,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>  
@@ -43,15 +46,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="commands">
-<h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
+  <section id="commands">
+<h1>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h1>
 <p>uHugo is a CLI that comes with two commands</p>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
 <p><cite>uhugo install</cite> command can be used to install or force install a latest Hugo binary. If a binary already exists and you wish to reinstall then you can use
 <code class="docutils literal notranslate"><span class="pre">--force</span></code> flag.</p>
-<div class="section" id="install-help">
-<h3>Install Help<a class="headerlink" href="#install-help" title="Permalink to this headline">¶</a></h3>
+<section id="install-help">
+<h3>Install Help<a class="headerlink" href="#install-help" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo install --help
 Usage: uhugo install <span class="o">[</span>OPTIONS<span class="o">]</span>
 
@@ -63,13 +66,13 @@ Options:
   --help              Show this message and exit.
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="update">
-<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">uhugo</span> <span class="pre">update</span></code> can be used to update an existing binary. This command can also be used to downgrade Hugo version using the <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> flag.</p>
-<div class="section" id="update-help">
-<h3>Update Help<a class="headerlink" href="#update-help" title="Permalink to this headline">¶</a></h3>
+<section id="update-help">
+<h3>Update Help<a class="headerlink" href="#update-help" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo update --help
 Usage: uhugo update <span class="o">[</span>OPTIONS<span class="o">]</span>
 
@@ -82,27 +85,27 @@ Options:
   --help        Show this message and exit.
 </pre></div>
 </div>
-</div>
-<div class="section" id="to-flag">
-<h3>–to Flag<a class="headerlink" href="#to-flag" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="to-flag">
+<h3>–to Flag<a class="headerlink" href="#to-flag" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> can be used to install a specific version of Hugo binary</p>
-</div>
-<div class="section" id="only-hugo-flag">
-<h3>–only-hugo Flag<a class="headerlink" href="#only-hugo-flag" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="only-hugo-flag">
+<h3>–only-hugo Flag<a class="headerlink" href="#only-hugo-flag" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--only-hugo</span></code> is a binary flag. It can be used when you only want to update Hugo binary and ignore updating cloud provider</p>
-</div>
-<div class="section" id="only-cloud-flag">
-<h3>–only-cloud Flag<a class="headerlink" href="#only-cloud-flag" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="only-cloud-flag">
+<h3>–only-cloud Flag<a class="headerlink" href="#only-cloud-flag" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">only-cloud</span></code> is a binary flag. It can be used when you only want to update cloud provider and ignore updating Hugo binary</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -111,8 +114,9 @@ Options:
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Commands</a><ul>
 <li><a class="reference internal" href="#install">Install</a><ul>
 <li><a class="reference internal" href="#install-help">Install Help</a></li>
@@ -129,12 +133,17 @@ Options:
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to uHugo’s documentation!</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="providers/index.html"
-                        title="next chapter">Providers</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to uHugo’s documentation!</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="providers/index.html"
+                          title="next chapter">Providers</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -146,12 +155,12 @@ Options:
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -171,13 +180,13 @@ Options:
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.1.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
     </div>
   </body>
 </html>
