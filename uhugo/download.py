@@ -42,15 +42,15 @@ def download_hugo_zip(version: str, os_type: str = None, download_to: str = None
         with open(download_to, "wb") as file:
             if os_type == 'Darwin':
                 response = requests.get(
-                    f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_macOS-64bit.tar.gz",
+                    f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_darwin-universal.tar.gz",
                     stream=True)
             elif os_type == 'Windows' or os_type == 'nt':
                 response = requests.get(
-                    f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_Windows-64bit.zip",
+                    f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_windows-amd64.zip",
                     stream=True)
             elif os_type == "posix" or os_type == "Linux":
                 response = requests.get(
-                    f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_Linux-64bit.zip",
+                    f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_linux-amd64.zip",
                     stream=True)
             else:
                 raise OSError(f"{os_type} not supported.")
