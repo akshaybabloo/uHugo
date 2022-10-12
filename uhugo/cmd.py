@@ -76,11 +76,11 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
         _ver = get_latest_version_api(to)
         log.debug(f"Latest version is {_ver}")
 
-    if (hugo.version >= version.Version(_ver)) and not to:
+    if (hugo.version >= version.Version(_ver)) and not to and not only_cloud:
         console.print("Hugo is up to date :tada:", style="green")
         return
 
-    if not to:
+    if not to and not (hugo.version >= version.Version(_ver)):
         console.print(Panel.fit(f"New version available, v{hugo.version} -> v{_ver}", title=f"Hugo v{_ver}"), style="green")
 
     if not only_cloud:
@@ -91,6 +91,9 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
             install_hugo(download_path)
 
         console.print("\nLocal Hugo updated! :tada:\n", style='green bold')
+
+    if only_cloud:
+        console.print("Updating only the cloud :sun_behind_cloud:", style="yellow")
 
     # ignore cloud provider updates with --only-hugo flag
     if only_hugo:
@@ -107,12 +110,12 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
         # checks for "env" value and sets the appropriate key with the environment value
         for key, val in provider.dict().items():
-            if val == "env":
+            if val and val.startswith("env"):
                 try:
-                    setattr(provider, key, os.environ[key])
+                    setattr(provider, key, os.environ[val.split(":")[1]])
                 except KeyError as e:
                     log.debug(e)
-                    console.print("Make sure environment variables are set", style="bold red")
+                    console.print(f"Environment variable '{val.split(':')[1]}' not found", style="bold red")
                     exit(1)
 
         if provider.name == "cloudflare":
@@ -121,7 +124,6 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
             projects = cf.get_projects(provider.project).json()
             if projects['success'] and isinstance(projects['result'], list):
                 names = [name['name'] for name in projects['result']]
-                print(names)
                 name = Prompt.ask("Enter project name", choices=names)
             elif not projects['success']:
                 console.print("There was an error fetching your Cloudflare project", style="bold red")
