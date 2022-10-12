@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.cmd &#8212; uHugo 0.1.0 documentation</title>
+    <title>uhugo.cmd &#8212; uHugo 0.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
@@ -28,7 +28,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.cmd</a></li> 
       </ul>
@@ -118,11 +118,11 @@
         <span class="n">_ver</span> <span class="o">=</span> <span class="n">get_latest_version_api</span><span class="p">(</span><span class="n">to</span><span class="p">)</span>
         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latest version is </span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">hugo</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="n">version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="n">_ver</span><span class="p">))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">to</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">hugo</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="n">version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="n">_ver</span><span class="p">))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">to</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">only_cloud</span><span class="p">:</span>
         <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Hugo is up to date :tada:&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">to</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">to</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">hugo</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="n">version</span><span class="o">.</span><span class="n">Version</span><span class="p">(</span><span class="n">_ver</span><span class="p">)):</span>
         <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Panel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New version available, v</span><span class="si">{</span><span class="n">hugo</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2"> -&gt; v</span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Hugo v</span><span class="si">{</span><span class="n">_ver</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">only_cloud</span><span class="p">:</span>
@@ -133,6 +133,9 @@
             <span class="n">install_hugo</span><span class="p">(</span><span class="n">download_path</span><span class="p">)</span>
 
         <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Local Hugo updated! :tada:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;green bold&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">only_cloud</span><span class="p">:</span>
+        <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Updating only the cloud :sun_behind_cloud:&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
 
     <span class="c1"># ignore cloud provider updates with --only-hugo flag</span>
     <span class="k">if</span> <span class="n">only_hugo</span><span class="p">:</span>
@@ -149,12 +152,12 @@
 
         <span class="c1"># checks for &quot;env&quot; value and sets the appropriate key with the environment value</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">provider</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s2">&quot;env&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="ow">and</span> <span class="n">val</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;env&quot;</span><span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]])</span>
                 <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                     <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-                    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Make sure environment variables are set&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold red&quot;</span><span class="p">)</span>
+                    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Environment variable &#39;</span><span class="si">{</span><span class="n">val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; not found&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold red&quot;</span><span class="p">)</span>
                     <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">provider</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;cloudflare&quot;</span><span class="p">:</span>
@@ -163,7 +166,6 @@
             <span class="n">projects</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">get_projects</span><span class="p">(</span><span class="n">provider</span><span class="o">.</span><span class="n">project</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">projects</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">projects</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">projects</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]]</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">Prompt</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="s2">&quot;Enter project name&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
             <span class="k">elif</span> <span class="ow">not</span> <span class="n">projects</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]:</span>
                 <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;There was an error fetching your Cloudflare project&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;bold red&quot;</span><span class="p">)</span>
@@ -217,7 +219,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.cmd</a></li> 
       </ul>
