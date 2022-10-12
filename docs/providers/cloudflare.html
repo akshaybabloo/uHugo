@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Cloudflare &#8212; uHugo 0.1.0 documentation</title>
+    <title>Cloudflare &#8212; uHugo 0.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="index.html" title="Providers"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Providers</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Cloudflare</a></li> 
       </ul>
@@ -60,17 +60,17 @@ come with a configuration file. That means to set the Hugo version an API is use
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Y29uZmlnLnRvbWw=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tab" tabindex="0">config.toml</button><button aria-controls="panel-0-Y29uZmlnLnlhbWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tab" tabindex="-1">config.yaml</button></div><div aria-labelledby="tab-0-Y29uZmlnLnRvbWw=" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tabpanel" tabindex="0"><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[uhugo]</span><span class="w"></span>
 <span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cloudflare&quot;</span><span class="w"></span>
 <span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;some-name&quot;</span><span class="w"></span>
-<span class="n">email_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;env&quot;</span><span class="w"></span>
-<span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;env&quot;</span><span class="w"></span>
-<span class="n">api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;env&quot;</span><span class="w"></span>
+<span class="n">email_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;env:email_address&quot;</span><span class="w"></span>
+<span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;env:account_id&quot;</span><span class="w"></span>
+<span class="n">api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;env:api_key&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-Y29uZmlnLnlhbWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">uhugo</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloudflare</span><span class="w"></span>
-<span class="w">    </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">some-name</span><span class="w"></span>
-<span class="w">    </span><span class="nt">email_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env</span><span class="w"></span>
-<span class="w">    </span><span class="nt">account_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env</span><span class="w"></span>
-<span class="w">    </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">env</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cloudflare&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;some-name&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">email_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;env:email_address&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">account_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;env:account_id&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;env:api_key&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 </div></div>
@@ -83,7 +83,7 @@ come with a configuration file. That means to set the Hugo version an API is use
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>For security reasons, it is highly recommended that you not save API keys in the configuration file but rather set it as an environment variable.
-For example, whenever a configuration property is set to <code class="docutils literal notranslate"><span class="pre">env</span></code>, uHugo will search for its name as an environment variable.</p>
+For example, whenever a configuration property is set to <code class="docutils literal notranslate"><span class="pre">env:api_key</span></code>, uHugo will search for <code class="docutils literal notranslate"><span class="pre">api_key=some-key</span></code> as the environment variable.</p>
 </div>
 </section>
 
@@ -140,7 +140,7 @@ For example, whenever a configuration property is set to <code class="docutils l
         <li class="right" >
           <a href="index.html" title="Providers"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Providers</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Cloudflare</a></li> 
       </ul>
