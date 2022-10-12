@@ -15,18 +15,18 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
         [uhugo]
         name = "cloudflare"
         project = "some-name"
-        email_address = "env"
-        account_id = "env"
-        api_key = "env"
+        email_address = "env:email_address"
+        account_id = "env:account_id"
+        api_key = "env:api_key"
 
     .. code-tab:: yaml config.yaml
 
         uhugo:
-            name: cloudflare
-            project: some-name
-            email_address: env
-            account_id: env
-            api_key: env
+            name: "cloudflare"
+            project: "some-name"
+            email_address: "env:email_address"
+            account_id: "env:account_id"
+            api_key: "env:api_key"
 
 ``email_address`` is your authentication email ID, ``account_id`` can be retrieved from `Workers Dashboard <https://dash.cloudflare.com/?to=/:account/workers>`_ and 
 ``api_key`` can be retrieved from `API Token <https://dash.cloudflare.com/profile/api-tokens>`_ and copy the "Global API Key". 
@@ -34,5 +34,5 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
 .. note:: ``api_key`` must be a "Global API Key" or else the API cannot be authenticated.
 
 .. warning:: For security reasons, it is highly recommended that you not save API keys in the configuration file but rather set it as an environment variable.
-    For example, whenever a configuration property is set to ``env``, uHugo will search for its name as an environment variable.
+    For example, whenever a configuration property is set to ``env:api_key``, uHugo will search for ``api_key=some-key`` as the environment variable.
 
