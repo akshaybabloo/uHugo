@@ -2,11 +2,15 @@ import json
 import logging
 import platform
 from pathlib import Path
+from datetime import datetime
 
+import aiohttp
 import requests
-from rich import print
+from packaging import version
+from rich.console import Console
 
 log = logging.getLogger(__name__)
+console = Console()
 
 if platform.system() == 'Windows':
     from .terminal_commands.windows import *
@@ -47,10 +51,42 @@ def get_latest_version_api(override_version: str = None) -> str:
             return override_version
         else:
             log.debug("Override version request error occurred", hugo_response.content)
-            print(f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases for more information.")
+            console.print(f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases for more information.")
             exit(1)
 
     hugo_response = requests.get("https://api.github.com/repos/gohugoio/hugo/releases/latest")
     hugo_response = json.loads(hugo_response.content.decode('utf-8'))['tag_name'][1:]
 
     return hugo_response
+
+
+async def self_update_check_async():
+    """
+    Checks if there is a new version of uhugo available
+    """
+
+    with open(Path.home().joinpath(".uhugo", "config.json"), "r") as f:
+        config = json.load(f)
+        if config['last_checked'] is None:
+            pass
+        # check if last checked was more than 5 days ago
+        elif (datetime.now() - datetime.fromisoformat(config['last_checked'])).days > 5:
+            pass
+        else:
+            return
+
+    from . import __version__
+
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://pypi.org/pypi/uhugo/json") as resp:
+            data = await resp.json()
+            latest_version = data["info"]["version"]
+
+            if version.Version(latest_version) > version.Version(__version__):
+                console.print(f"\n[bold green]New uhugo version available, v{__version__} -> v{latest_version}[/bold green]")
+                console.print(f"Run [bold yellow]pip install --upgrade uhugo[/bold yellow] to update \n")
+
+                # Update last checked
+                with open(Path.home().joinpath(".uhugo", "config.json"), "w") as f:
+                    config['last_checked'] = datetime.now().isoformat()
+                    json.dump(config, f, indent=4)

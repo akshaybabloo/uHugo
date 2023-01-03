@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 from typing import Text, Union
@@ -9,7 +10,7 @@ from rich.panel import Panel
 from rich.prompt import Prompt
 
 from . import __version__
-from .checks import check_hugo, get_latest_version_api
+from .checks import check_hugo, get_latest_version_api, self_update_check_async
 from .download import download_hugo_zip
 from .install import install_hugo
 from .post_install.detect_providers import check_hugo_file, check_providers_fs
@@ -145,4 +146,6 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
 
 def main():
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(self_update_check_async())
     cli(obj={})
