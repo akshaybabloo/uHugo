@@ -63,8 +63,8 @@ def install(ver: Text, force: bool):
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", default=None, help="Updates to a specified version")
-@click.option("--hugo", is_flag=True, help="Updates only Hugo binary while ignoring providers")
-@click.option("--cloud", is_flag=True, help="Updates only cloud providers while ignoring Hugo")
+@click.option("--hugo", "only_hugo", is_flag=True, help="Updates only Hugo binary while ignoring providers")
+@click.option("--cloud", "only_cloud", is_flag=True, help="Updates only cloud providers while ignoring Hugo")
 def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
     hugo = check_hugo()
     if not hugo.exists:
