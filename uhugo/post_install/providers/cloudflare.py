@@ -14,7 +14,9 @@ class Cloudflare(ProviderBase):
     Cloudflare provider
     """
 
-    def __init__(self, api_key: Text = None, email_address: Text = None, account_id: Text = None, hugo_version: Text = None):
+    def __init__(
+        self, api_key: Text = None, email_address: Text = None, account_id: Text = None, hugo_version: Text = None
+    ):
         """
 
         :param hugo_version: New Hugo version
@@ -36,10 +38,7 @@ class Cloudflare(ProviderBase):
         if not email_address and not self.account_id and not self.hugo_version:
             raise ValueError("email_address, account_id or hugo_version not provided")
 
-        self.headers = {
-            "X-Auth-Email": email_address,
-            "X-Auth-Key": self.api_key
-        }
+        self.headers = {"X-Auth-Email": email_address, "X-Auth-Key": self.api_key}
 
     def update_api(self, project_name: Text) -> requests.Response:
         """
@@ -51,27 +50,16 @@ class Cloudflare(ProviderBase):
 
         data = {
             "deployment_configs": {
-                "preview": {
-                    "env_vars": {
-                        "delete_this_env_var": None,
-                        "HUGO_VERSION": {
-                            "value": self.hugo_version
-                        }
-                    }
-                },
-                "production": {
-                    "env_vars": {
-                        "delete_this_env_var": None,
-                        "HUGO_VERSION": {
-                            "value": self.hugo_version
-                        }
-                    }
-                }
+                "preview": {"env_vars": {"delete_this_env_var": None, "HUGO_VERSION": {"value": self.hugo_version}}},
+                "production": {"env_vars": {"delete_this_env_var": None, "HUGO_VERSION": {"value": self.hugo_version}}},
             }
         }
 
-        response = requests.patch(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
-                                  json=data, headers=self.headers)
+        response = requests.patch(
+            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
+            json=data,
+            headers=self.headers,
+        )
         return response
 
     def get_projects(self, project_name: Text = None) -> requests.Response:
@@ -83,11 +71,14 @@ class Cloudflare(ProviderBase):
         """
 
         if not project_name:
-            response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects",
-                                    headers=self.headers)
+            response = requests.get(
+                f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects", headers=self.headers
+            )
         else:
-            response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
-                                    headers=self.headers)
+            response = requests.get(
+                f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
+                headers=self.headers,
+            )
         return response
 
     def current_version(self, project_name: Text = None) -> Union[str, None]:
@@ -96,12 +87,14 @@ class Cloudflare(ProviderBase):
 
         :param project_name: Name of the project to check from
         """
-        response = requests.get(f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
-                                headers=self.headers)
+        response = requests.get(
+            f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects/{project_name}",
+            headers=self.headers,
+        )
 
         data = response.json()
         try:
-            return data['result']['deployment_configs']['production']['env_vars']['HUGO_VERSION']['value']
+            return data["result"]["deployment_configs"]["production"]["env_vars"]["HUGO_VERSION"]["value"]
         except KeyError as e:
             log.debug(e)
             return None

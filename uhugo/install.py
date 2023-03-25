@@ -18,10 +18,10 @@ def install_hugo(extract_from: str, os_type: str = platform.system(), move_to: s
     :return: Installation path
     """
 
-    if os_type == 'Darwin' or os_type == 'Linux':
+    if os_type == "Darwin" or os_type == "Linux":
         with tarfile.open(extract_from, "r:gz") as f:
             f.extract("hugo", move_to)
-    elif os_type == 'Windows':
+    elif os_type == "Windows":
         with zipfile.ZipFile(extract_from, "r") as f:
             f.extract("hugo.exe", move_to)
 

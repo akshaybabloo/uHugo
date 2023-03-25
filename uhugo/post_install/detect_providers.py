@@ -12,6 +12,7 @@ class Provider(BaseModel):
     """
     This holds the information about the provider
     """
+
     name: Union[str, None] = None
     project: Union[str, None] = None
     file_name: Union[str, None] = None
@@ -35,6 +36,7 @@ def check_hugo_file() -> Provider:
             return Provider()
         else:
             import yaml
+
             try:
                 from yaml import CLoader as Loader, CDumper as Dumper
             except ImportError:
@@ -43,10 +45,11 @@ def check_hugo_file() -> Provider:
                 data = yaml.load(f, Loader=Loader)
     else:
         import toml
+
         with open(path) as f:
             data = toml.load(f)
 
-    return Provider(**data['uhugo'])
+    return Provider(**data["uhugo"])
 
 
 def check_providers_fs() -> Union[Provider, None]:

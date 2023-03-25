@@ -3,8 +3,7 @@ import platform
 import tempfile
 
 import requests
-from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, TransferSpeedColumn, \
-    TimeRemainingColumn
+from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, TransferSpeedColumn, TimeRemainingColumn
 
 progress = Progress(
     TextColumn("[bold blue]{task.fields[filename]}", justify="right"),
@@ -16,7 +15,7 @@ progress = Progress(
     TransferSpeedColumn(),
     "•",
     TimeRemainingColumn(),
-    transient=True
+    transient=True,
 )
 
 
@@ -40,25 +39,28 @@ def download_hugo_zip(version: str, os_type: str = None, download_to: str = None
         task_id = progress.add_task("download", filename=f"hugo_{version}", start=False)
 
         with open(download_to, "wb") as file:
-            if os_type == 'Darwin':
+            if os_type == "Darwin":
                 response = requests.get(
                     f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_darwin-universal.tar.gz",
-                    stream=True)
-            elif os_type == 'Windows' or os_type == 'nt':
+                    stream=True,
+                )
+            elif os_type == "Windows" or os_type == "nt":
                 response = requests.get(
                     f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_windows-amd64.zip",
-                    stream=True)
+                    stream=True,
+                )
             elif os_type == "posix" or os_type == "Linux":
                 response = requests.get(
                     f"https://github.com/gohugoio/hugo/releases/download/v{version}/hugo_extended_{version}_linux-amd64.zip",
-                    stream=True)
+                    stream=True,
+                )
             else:
                 raise OSError(f"{os_type} not supported.")
 
-            if response.headers.get('Status') == "404 Not Found":
+            if response.headers.get("Status") == "404 Not Found":
                 raise requests.exceptions.HTTPError("File not found")
 
-            total_length = int(response.headers.get('content-length'))
+            total_length = int(response.headers.get("content-length"))
 
             if total_length is None:
                 progress.console.print(f"- Downloading Hugo v{version}")
