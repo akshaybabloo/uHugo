@@ -6,14 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Providers &#8212; uHugo 0.2.0 documentation</title>
+    <title>Providers &#8212; uHugo 0.2.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/tabs.js"></script>
@@ -37,7 +34,7 @@
         <li class="right" >
           <a href="../commands.html" title="Commands"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Providers</a></li> 
       </ul>
     </div>  
@@ -55,22 +52,22 @@
 <p>Providers are basically cloud providers that host your static website. uHugo comes with three providers.
 These providers can be set in Hugo’s <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">config.toml</span></code>, using the following configurations</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Y29uZmlnLnRvbWw=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tab" tabindex="0">config.toml</button><button aria-controls="panel-0-Y29uZmlnLnlhbWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tab" tabindex="-1">config.yaml</button></div><div aria-labelledby="tab-0-Y29uZmlnLnRvbWw=" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tabpanel" tabindex="0"><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[uhugo]</span><span class="w"></span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;name of the provider&gt;&quot;</span><span class="w"></span>
-<span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;project name or ID&gt;&quot;</span><span class="w"></span>
-<span class="n">email_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;email address of the user authenticated&gt;&quot;</span><span class="w"> </span><span class="c1"># part of cloudflare</span><span class="w"></span>
-<span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;Cloudflare workers account ID&gt;&quot;</span><span class="w"> </span><span class="c1"># part of cloudflare</span><span class="w"></span>
-<span class="n">api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;authentication key&gt;&quot;</span><span class="w"></span>
-<span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;name of the configuration file&gt;&quot;</span><span class="w"></span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Y29uZmlnLnRvbWw=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tab" tabindex="0">config.toml</button><button aria-controls="panel-0-Y29uZmlnLnlhbWw=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tab" tabindex="-1">config.yaml</button></div><div aria-labelledby="tab-0-Y29uZmlnLnRvbWw=" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-Y29uZmlnLnRvbWw=" name="Y29uZmlnLnRvbWw=" role="tabpanel" tabindex="0"><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[uhugo]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;name of the provider&gt;&quot;</span>
+<span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;project name or ID&gt;&quot;</span>
+<span class="n">email_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;email address of the user authenticated&gt;&quot;</span><span class="w"> </span><span class="c1"># part of cloudflare</span>
+<span class="n">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;Cloudflare workers account ID&gt;&quot;</span><span class="w"> </span><span class="c1"># part of cloudflare</span>
+<span class="n">api_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;authentication key&gt;&quot;</span>
+<span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&lt;name of the configuration file&gt;&quot;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-Y29uZmlnLnlhbWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">uhugo</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;name of the provider&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">project = &lt;project name or ID&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">email_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address of the user authenticated&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">account_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Cloudflare workers account ID&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;authentication key&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">file_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;name of the configuration file&gt;</span><span class="w"></span>
+</div><div aria-labelledby="tab-0-Y29uZmlnLnlhbWw=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Y29uZmlnLnlhbWw=" name="Y29uZmlnLnlhbWw=" role="tabpanel" tabindex="0"><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">uhugo</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;name of the provider&gt;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">project = &lt;project name or ID&gt;</span>
+<span class="w">    </span><span class="nt">email_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address of the user authenticated&gt;</span>
+<span class="w">    </span><span class="nt">account_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Cloudflare workers account ID&gt;</span>
+<span class="w">    </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;authentication key&gt;</span>
+<span class="w">    </span><span class="nt">file_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;name of the configuration file&gt;</span>
 </pre></div>
 </div>
 </div></div>
@@ -169,13 +166,13 @@ These providers can be set in Hugo’s <code class="docutils literal notranslate
         <li class="right" >
           <a href="../commands.html" title="Commands"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Providers</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

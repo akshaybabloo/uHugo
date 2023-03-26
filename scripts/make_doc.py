@@ -25,6 +25,7 @@ def make_doc():
         shutil.copytree("_build/html/", "../docs")
     except Exception as error:
         print(error)
+        exit(1)
 
 
 if __name__ == "__main__":

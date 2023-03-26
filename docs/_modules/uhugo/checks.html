@@ -5,14 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.checks &#8212; uHugo 0.2.0 documentation</title>
+    <title>uhugo.checks &#8212; uHugo 0.2.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/tabs.js"></script>
@@ -28,7 +25,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.checks</a></li> 
       </ul>
@@ -50,16 +47,16 @@
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Windows&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.terminal_commands.windows</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Linux&#39;</span> <span class="ow">or</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Darwin&#39;</span><span class="p">:</span>
+<span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Linux&quot;</span> <span class="ow">or</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">.terminal_commands.posix</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;Unknown OS&quot;</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="bin_folder"><a class="viewcode-back" href="../../reference/checks.html#uhugo.checks.bin_folder">[docs]</a><span class="k">def</span> <span class="nf">bin_folder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gives the path of the user bin folder if exists else a bin folder is created in the</span>
 <span class="sd">    ``&lt;user home&gt;/bin``</span>
 
@@ -76,7 +73,7 @@
 
 
 <div class="viewcode-block" id="get_latest_version_api"><a class="viewcode-back" href="../../reference/checks.html#uhugo.checks.get_latest_version_api">[docs]</a><span class="k">def</span> <span class="nf">get_latest_version_api</span><span class="p">(</span><span class="n">override_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the latest Hugo version</span>
 
 <span class="sd">    :param override_version: An override version of Hugo</span>
@@ -89,11 +86,13 @@
             <span class="k">return</span> <span class="n">override_version</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Override version request error occurred&quot;</span><span class="p">,</span> <span class="n">hugo_response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[red bold]Hugo v</span><span class="si">{</span><span class="n">override_version</span><span class="si">}</span><span class="s2"> does not exists. See https://github.com/gohugoio/hugo/releases for more information.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[red bold]Hugo v</span><span class="si">{</span><span class="n">override_version</span><span class="si">}</span><span class="s2"> does not exists. See https://github.com/gohugoio/hugo/releases for more information.&quot;</span>
+            <span class="p">)</span>
             <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">hugo_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.github.com/repos/gohugoio/hugo/releases/latest&quot;</span><span class="p">)</span>
-    <span class="n">hugo_response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">hugo_response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))[</span><span class="s1">&#39;tag_name&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">hugo_response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">hugo_response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))[</span><span class="s2">&quot;tag_name&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
 
     <span class="k">return</span> <span class="n">hugo_response</span></div>
 </pre></div>
@@ -127,14 +126,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.checks</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>
