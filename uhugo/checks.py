@@ -48,7 +48,8 @@ def get_latest_version_api(override_version: str = None) -> str:
         else:
             log.debug("Override version request error occurred", hugo_response.content)
             print(
-                f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases for more information."
+                f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases"
+                " for more information."
             )
             exit(1)
 

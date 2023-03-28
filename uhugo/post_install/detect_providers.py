@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Union
+from typing import Union, List
 
 from pydantic import BaseModel
 
@@ -19,12 +19,12 @@ class Provider(BaseModel):
     api_key: Union[str, None] = None
     account_id: Union[str, None] = None
     email_address: Union[str, None] = None
+    path: Union[str, None] = None
 
 
 def check_hugo_file() -> Provider:
     """
-    Checks for ``config.yaml`` or ``config.toml``, if exists then it checks for ``uhugoProvider``
-    and ``uhugoProviderFileName`` (this is optional)
+    Checks for ``config.yaml`` or ``config.toml``, if exists then it checks for ``uhugo`` key
 
     :return Provider: An object with ``name`` and ``file_name``
     """
@@ -52,18 +52,19 @@ def check_hugo_file() -> Provider:
     return Provider(**data["uhugo"])
 
 
-def check_providers_fs() -> Union[Provider, None]:
+def check_providers_fs() -> List[Provider]:
     """
     Checks file system for any providers that matches the list
 
     :return: A Provider
     """
 
-    files = ["netlify.yaml", "vercel.json"]
+    files = ["netlify.yaml", "vercel.json", "netlify.toml"]
+    providers: List[Provider] = []
 
     for file in files:
         path = Path(HERE, file)
         if path.exists():
-            return Provider(**{"name": path.name.split(".")[0], "path": path.__str__()})
+            providers.append(Provider(**{"name": path.name.split(".")[0], "path": path.__str__()}))
 
-    return Provider()
+    return providers

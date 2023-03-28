@@ -136,6 +136,7 @@ dmypy.json
 
 .vscode/
 config.toml
-netlify.yaml
+netlify.*
 vercel.json
 temp.py
+*.ps1
