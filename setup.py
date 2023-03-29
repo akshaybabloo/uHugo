@@ -38,7 +38,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Intended Audience :: Developers",
         "Environment :: Console",
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Topic :: Utilities",
     ],
     entry_points={"console_scripts": ["uhugo = uhugo.cmd:main"]},
