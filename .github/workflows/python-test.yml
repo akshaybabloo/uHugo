@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
@@ -39,7 +39,9 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
+        cd tests
         pytest --cov-config .coveragerc --cov=uhugo -vv --cov-report=xml
     - name: "Upload coverage to Codecov"
       run: |
+        cd tests
         codecov --token=${{ secrets.CODECOV_TOKEN }}

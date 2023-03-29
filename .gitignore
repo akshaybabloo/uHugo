@@ -142,3 +142,5 @@ netlify.json
 vercel.json
 temp.py
 *.ps1
+!tests/*.toml
+!tests/*.json
