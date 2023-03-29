@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Providers &#8212; uHugo 0.2.5 documentation</title>
+    <title>Netlify Provider &#8212; uHugo 0.2.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
@@ -15,8 +15,8 @@
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cloudflare Provider" href="cloudflare.html" />
-    <link rel="prev" title="Commands" href="../commands.html" /> 
+    <link rel="next" title="Vercel Provider" href="vercel.html" />
+    <link rel="prev" title="Cloudflare Provider" href="cloudflare.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,13 +28,14 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="cloudflare.html" title="Cloudflare Provider"
+          <a href="vercel.html" title="Vercel Provider"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../commands.html" title="Commands"
+          <a href="cloudflare.html" title="Cloudflare Provider"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Providers</a></li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Providers</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Netlify Provider</a></li> 
       </ul>
     </div>  
 
@@ -43,33 +44,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="providers">
-<h1>Providers<a class="headerlink" href="#providers" title="Permalink to this heading">¶</a></h1>
+  <section id="netlify-provider">
+<h1>Netlify Provider<a class="headerlink" href="#netlify-provider" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.0.3.</span></p>
+<p><span class="versionmodified added">New in version 1.0.0.</span></p>
 </div>
-<p>Providers are cloud hosted services that host your static website. uHugo comes with three providers - Netlify, Cloudflare and Vercel.</p>
-<p>Every provider has their own configuration files.</p>
-<ol class="arabic simple">
-<li><p>Netlify - <code class="docutils literal notranslate"><span class="pre">netlify.toml</span></code></p></li>
-<li><p>Cloudflare - <code class="docutils literal notranslate"><span class="pre">config.[toml|yaml]</span></code></p></li>
-<li><p>Vercel - <code class="docutils literal notranslate"><span class="pre">vercel.json</span></code></p></li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For Cloudflare, the configurations must be put in Hugo’s <code class="docutils literal notranslate"><span class="pre">config.[toml|yaml]</span></code> file.</p>
-</div>
-<section id="supported-providers">
-<h2>Supported Providers<a class="headerlink" href="#supported-providers" title="Permalink to this heading">¶</a></h2>
-<p>Let’s look at the providers in detail.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="cloudflare.html">Cloudflare Provider</a></li>
-<li class="toctree-l1"><a class="reference internal" href="netlify.html">Netlify Provider</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vercel.html">Vercel Provider</a></li>
-</ul>
-</div>
-</section>
+<p>The <code class="docutils literal notranslate"><span class="pre">netlify</span></code> provider allows you to deploy your static site to <a class="reference external" href="https://www.netlify.com/">Netlify</a>.</p>
+<p>uHugo automatically detects the <code class="docutils literal notranslate"><span class="pre">netlify</span></code> provider if you have a <code class="docutils literal notranslate"><span class="pre">netlify.toml</span></code> file in your project and searches for <code class="docutils literal notranslate"><span class="pre">HUGO_VERSION</span></code> key in the <code class="docutils literal notranslate"><span class="pre">[context.production.environment]</span></code> section.
+If found, uHugo will update it to the latest version of Hugo. It also, updates the preview builds to the latest version of Hugo in the <code class="docutils literal notranslate"><span class="pre">[context.deploy-preview.environment]</span></code> section.</p>
 </section>
 
 
@@ -80,29 +62,19 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Providers</a><ul>
-<li><a class="reference internal" href="#supported-providers">Supported Providers</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../commands.html"
-                          title="previous chapter">Commands</a></p>
+    <p class="topless"><a href="cloudflare.html"
+                          title="previous chapter">Cloudflare Provider</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="cloudflare.html"
-                          title="next chapter">Cloudflare Provider</a></p>
+    <p class="topless"><a href="vercel.html"
+                          title="next chapter">Vercel Provider</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/providers/index.rst.txt"
+      <li><a href="../_sources/providers/netlify.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -130,13 +102,14 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="cloudflare.html" title="Cloudflare Provider"
+          <a href="vercel.html" title="Vercel Provider"
              >next</a> |</li>
         <li class="right" >
-          <a href="../commands.html" title="Commands"
+          <a href="cloudflare.html" title="Cloudflare Provider"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Providers</a></li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >Providers</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Netlify Provider</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

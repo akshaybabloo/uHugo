@@ -48,9 +48,9 @@
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">.terminal_commands.windows</span> <span class="kn">import</span> <span class="o">*</span>
+    <span class="kn">from</span> <span class="nn">.terminal_commands.windows</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># noqa</span>
 <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Linux&quot;</span> <span class="ow">or</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">.terminal_commands.posix</span> <span class="kn">import</span> <span class="o">*</span>
+    <span class="kn">from</span> <span class="nn">.terminal_commands.posix</span> <span class="kn">import</span> <span class="o">*</span>  <span class="c1"># noqa</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s2">&quot;Unknown OS&quot;</span><span class="p">)</span>
 
@@ -87,7 +87,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Override version request error occurred&quot;</span><span class="p">,</span> <span class="n">hugo_response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[red bold]Hugo v</span><span class="si">{</span><span class="n">override_version</span><span class="si">}</span><span class="s2"> does not exists. See https://github.com/gohugoio/hugo/releases for more information.&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[red bold]Hugo v</span><span class="si">{</span><span class="n">override_version</span><span class="si">}</span><span class="s2"> does not exists. See https://github.com/gohugoio/hugo/releases&quot;</span>
+                <span class="s2">&quot; for more information.&quot;</span>
             <span class="p">)</span>
             <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 

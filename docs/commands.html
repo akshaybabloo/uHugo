@@ -76,10 +76,10 @@ Usage:<span class="w"> </span>uhugo<span class="w"> </span>update<span class="w"
 <span class="w">  </span>Updates<span class="w"> </span>Hugo<span class="w"> </span>binary<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>any<span class="w"> </span>associated<span class="w"> </span>configurations
 
 Options:
-<span class="w">  </span>--to<span class="w"> </span>TEXT<span class="w">     </span>Updates<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>specified<span class="w"> </span>version
-<span class="w">  </span>--only-hugo<span class="w">   </span>Updates<span class="w"> </span>only<span class="w"> </span>Hugo<span class="w"> </span>binary<span class="w"> </span><span class="k">while</span><span class="w"> </span>ignoring<span class="w"> </span>providers
-<span class="w">  </span>--only-cloud<span class="w">  </span>Updates<span class="w"> </span>only<span class="w"> </span>cloud<span class="w"> </span>providers<span class="w"> </span><span class="k">while</span><span class="w"> </span>ignoring<span class="w"> </span>Hugo
-<span class="w">  </span>--help<span class="w">        </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
+<span class="w">  </span>--to<span class="w"> </span>TEXT<span class="w">  </span>Updates<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>specified<span class="w"> </span>version
+<span class="w">  </span>--local<span class="w">    </span>Updates<span class="w"> </span>only<span class="w"> </span><span class="nb">local</span><span class="w"> </span>Hugo<span class="w"> </span>binary<span class="w"> </span><span class="k">while</span><span class="w"> </span>ignoring<span class="w"> </span>providers
+<span class="w">  </span>--cloud<span class="w">    </span>Updates<span class="w"> </span>only<span class="w"> </span>cloud<span class="w"> </span>providers<span class="w"> </span><span class="k">while</span><span class="w"> </span>ignoring<span class="w"> </span>Hugo
+<span class="w">  </span>--help<span class="w">     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </pre></div>
 </div>
 </section>
@@ -87,19 +87,19 @@ Options:
 <h3>–to Flag<a class="headerlink" href="#to-flag" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> can be used to install a specific version of Hugo binary</p>
 </section>
-<section id="only-hugo-flag">
-<h3>–only-hugo Flag<a class="headerlink" href="#only-hugo-flag" title="Permalink to this heading">¶</a></h3>
+<section id="local-flag">
+<h3>–local Flag<a class="headerlink" href="#local-flag" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">--only-hugo</span></code> is a binary flag. It can be used when you only want to update Hugo binary and ignore updating cloud provider</p>
+<p><code class="docutils literal notranslate"><span class="pre">--local</span></code> flag only updates Hugo binary and ignores updating cloud providers. This flag can be used when you only want to update Hugo binary and not cloud providers.</p>
 </section>
-<section id="only-cloud-flag">
-<h3>–only-cloud Flag<a class="headerlink" href="#only-cloud-flag" title="Permalink to this heading">¶</a></h3>
+<section id="cloud-flag">
+<h3>–cloud Flag<a class="headerlink" href="#cloud-flag" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">only-cloud</span></code> is a binary flag. It can be used when you only want to update cloud provider and ignore updating Hugo binary</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cloud</span></code> flag only updates cloud providers and ignores updating Hugo binary locally. This flag can be used when you only want to update cloud providers and not Hugo binary locally.</p>
 </section>
 </section>
 </section>
@@ -122,8 +122,8 @@ Options:
 <li><a class="reference internal" href="#update">Update</a><ul>
 <li><a class="reference internal" href="#update-help">Update Help</a></li>
 <li><a class="reference internal" href="#to-flag">–to Flag</a></li>
-<li><a class="reference internal" href="#only-hugo-flag">–only-hugo Flag</a></li>
-<li><a class="reference internal" href="#only-cloud-flag">–only-cloud Flag</a></li>
+<li><a class="reference internal" href="#local-flag">–local Flag</a></li>
+<li><a class="reference internal" href="#cloud-flag">–cloud Flag</a></li>
 </ul>
 </li>
 </ul>
