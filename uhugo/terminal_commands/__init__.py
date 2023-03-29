@@ -7,6 +7,7 @@ from packaging import version
 @dataclass
 class Hugo:
     """Dataclass for Hugo"""
+
     path: str
     exists: bool
     version: version.Version

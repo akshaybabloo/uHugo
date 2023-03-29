@@ -8,10 +8,10 @@ from rich import print
 
 log = logging.getLogger(__name__)
 
-if platform.system() == 'Windows':
-    from .terminal_commands.windows import *
-elif platform.system() == 'Linux' or platform.system() == 'Darwin':
-    from .terminal_commands.posix import *
+if platform.system() == "Windows":
+    from .terminal_commands.windows import *  # noqa
+elif platform.system() == "Linux" or platform.system() == "Darwin":
+    from .terminal_commands.posix import *  # noqa
 else:
     raise OSError("Unknown OS")
 
@@ -47,10 +47,13 @@ def get_latest_version_api(override_version: str = None) -> str:
             return override_version
         else:
             log.debug("Override version request error occurred", hugo_response.content)
-            print(f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases for more information.")
+            print(
+                f"\n[red bold]Hugo v{override_version} does not exists. See https://github.com/gohugoio/hugo/releases"
+                " for more information."
+            )
             exit(1)
 
     hugo_response = requests.get("https://api.github.com/repos/gohugoio/hugo/releases/latest")
-    hugo_response = json.loads(hugo_response.content.decode('utf-8'))['tag_name'][1:]
+    hugo_response = json.loads(hugo_response.content.decode("utf-8"))["tag_name"][1:]
 
     return hugo_response

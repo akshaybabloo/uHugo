@@ -5,14 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.install &#8212; uHugo 0.2.0 documentation</title>
+    <title>uhugo.install &#8212; uHugo 0.2.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/tabs.js"></script>
@@ -28,7 +25,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.install</a></li> 
       </ul>
@@ -51,7 +48,7 @@
 
 
 <div class="viewcode-block" id="install_hugo"><a class="viewcode-back" href="../../reference/install.html#uhugo.install.install_hugo">[docs]</a><span class="k">def</span> <span class="nf">install_hugo</span><span class="p">(</span><span class="n">extract_from</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">os_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">(),</span> <span class="n">move_to</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">bin_folder</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Installs the ``hugo`` binary at a given path</span>
 
 <span class="sd">    :param extract_from: The path zip/tar file downloaded</span>
@@ -60,10 +57,10 @@
 <span class="sd">    :return: Installation path</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">if</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s1">&#39;Darwin&#39;</span> <span class="ow">or</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s1">&#39;Linux&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span> <span class="ow">or</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s2">&quot;Linux&quot;</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">extract_from</span><span class="p">,</span> <span class="s2">&quot;r:gz&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&quot;hugo&quot;</span><span class="p">,</span> <span class="n">move_to</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s1">&#39;Windows&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">extract_from</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s2">&quot;hugo.exe&quot;</span><span class="p">,</span> <span class="n">move_to</span><span class="p">)</span>
 
@@ -99,14 +96,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.install</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

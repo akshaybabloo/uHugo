@@ -5,14 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.post_install.providers &#8212; uHugo 0.2.0 documentation</title>
+    <title>uhugo.post_install.providers &#8212; uHugo 0.2.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/tabs.js"></script>
@@ -28,7 +25,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.post_install.providers</a></li> 
       </ul>
@@ -45,12 +42,12 @@
 
 
 <div class="viewcode-block" id="ProviderBase"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase">[docs]</a><span class="k">class</span> <span class="nc">ProviderBase</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is a base class for all the providers</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">config_path</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">hugo_version</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param hugo_version: New Hugo version</span>
 <span class="sd">        :param api_key: Authentication key for providers</span>
@@ -73,7 +70,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;api_ky, config_path or hugo_version not set&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ProviderBase.update_api"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.update_api">[docs]</a>    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates an API</span>
 
 <span class="sd">        :param project_name: Name of the project to update</span>
@@ -82,7 +79,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="ProviderBase.update_config_file"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.update_config_file">[docs]</a>    <span class="k">def</span> <span class="nf">update_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">:</span> <span class="n">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates a configuration file</span>
 
 <span class="sd">        :return:</span>
@@ -90,7 +87,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="ProviderBase.get_projects"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.get_projects">[docs]</a>    <span class="k">def</span> <span class="nf">get_projects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Checks and gets the current project</span>
 
 <span class="sd">        :param project_name: Name of the project to update</span>
@@ -98,7 +95,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="ProviderBase.current_version"><a class="viewcode-back" href="../../../reference/post_install/providers/init.html#uhugo.post_install.providers.ProviderBase.current_version">[docs]</a>    <span class="k">def</span> <span class="nf">current_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the current Hugo version</span>
 
 <span class="sd">        :param project_name: Name of the project to check from</span>
@@ -135,14 +132,14 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">uHugo 0.2.5 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.post_install.providers</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

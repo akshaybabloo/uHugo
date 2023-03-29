@@ -1,5 +1,5 @@
-Cloudflare
-==========
+Cloudflare Provider
+===================
 
 .. versionadded:: 0.0.3
 
@@ -13,20 +13,20 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
     .. code-tab:: toml config.toml
 
         [uhugo]
-        name = "cloudflare"
-        project = "some-name"
-        email_address = "env:email_address"
-        account_id = "env:account_id"
-        api_key = "env:api_key"
+        name = "cloudflare" # required
+        project = "some-name" # optional
+        email_address = "env:email_address" # required
+        account_id = "env:account_id" # required
+        api_key = "env:api_key" # required
 
     .. code-tab:: yaml config.yaml
 
         uhugo:
-            name: "cloudflare"
-            project: "some-name"
-            email_address: "env:email_address"
-            account_id: "env:account_id"
-            api_key: "env:api_key"
+            name: "cloudflare" # required
+            project: "some-name" # optional
+            email_address: "env:email_address" # required
+            account_id: "env:account_id" # required
+            api_key: "env:api_key" # required
 
 ``email_address`` is your authentication email ID, ``account_id`` can be retrieved from `Workers Dashboard <https://dash.cloudflare.com/?to=/:account/workers>`_ and 
 ``api_key`` can be retrieved from `API Token <https://dash.cloudflare.com/profile/api-tokens>`_ and copy the "Global API Key". 

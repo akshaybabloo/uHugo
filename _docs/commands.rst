@@ -40,26 +40,26 @@ Update Help
       Updates Hugo binary files and any associated configurations
 
     Options:
-      --to TEXT     Updates to a specified version
-      --only-hugo   Updates only Hugo binary while ignoring providers
-      --only-cloud  Updates only cloud providers while ignoring Hugo
-      --help        Show this message and exit.
+      --to TEXT  Updates to a specified version
+      --local    Updates only local Hugo binary while ignoring providers
+      --cloud    Updates only cloud providers while ignoring Hugo
+      --help     Show this message and exit.
 
 --to Flag
 ~~~~~~~~~
 
 ``--to <version number>`` can be used to install a specific version of Hugo binary
 
---only-hugo Flag
+--local Flag
 ~~~~~~~~~~~~~~~~
 
 .. versionadded:: 0.0.8
 
-``--only-hugo`` is a binary flag. It can be used when you only want to update Hugo binary and ignore updating cloud provider
+``--local`` flag only updates Hugo binary and ignores updating cloud providers. This flag can be used when you only want to update Hugo binary and not cloud providers. 
 
---only-cloud Flag
+--cloud Flag
 ~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 0.0.8
 
-``only-cloud`` is a binary flag. It can be used when you only want to update cloud provider and ignore updating Hugo binary
+``--cloud`` flag only updates cloud providers and ignores updating Hugo binary locally. This flag can be used when you only want to update cloud providers and not Hugo binary locally.

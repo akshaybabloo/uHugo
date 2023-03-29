@@ -6,14 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Commands &#8212; uHugo 0.2.0 documentation</title>
+    <title>Commands &#8212; uHugo 0.2.5 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -36,7 +33,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.2.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>  
@@ -55,15 +52,15 @@
 <code class="docutils literal notranslate"><span class="pre">--force</span></code> flag.</p>
 <section id="install-help">
 <h3>Install Help<a class="headerlink" href="#install-help" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo install --help
-Usage: uhugo install <span class="o">[</span>OPTIONS<span class="o">]</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>uhugo<span class="w"> </span>install<span class="w"> </span>--help
+Usage:<span class="w"> </span>uhugo<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
-  Install latest Hugo binary files
+<span class="w">  </span>Install<span class="w"> </span>latest<span class="w"> </span>Hugo<span class="w"> </span>binary<span class="w"> </span>files
 
 Options:
-  -v, --version TEXT  Hugo version to download
-  --force             Reinstall Hugo
-  --help              Show this message and exit.
+<span class="w">  </span>-v,<span class="w"> </span>--version<span class="w"> </span>TEXT<span class="w">  </span>Hugo<span class="w"> </span>version<span class="w"> </span>to<span class="w"> </span>download
+<span class="w">  </span>--force<span class="w">             </span>Reinstall<span class="w"> </span>Hugo
+<span class="w">  </span>--help<span class="w">              </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </pre></div>
 </div>
 </section>
@@ -73,16 +70,16 @@ Options:
 <p><code class="docutils literal notranslate"><span class="pre">uhugo</span> <span class="pre">update</span></code> can be used to update an existing binary. This command can also be used to downgrade Hugo version using the <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> flag.</p>
 <section id="update-help">
 <h3>Update Help<a class="headerlink" href="#update-help" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; uhugo update --help
-Usage: uhugo update <span class="o">[</span>OPTIONS<span class="o">]</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>uhugo<span class="w"> </span>update<span class="w"> </span>--help
+Usage:<span class="w"> </span>uhugo<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
-  Updates Hugo binary files and any associated configurations
+<span class="w">  </span>Updates<span class="w"> </span>Hugo<span class="w"> </span>binary<span class="w"> </span>files<span class="w"> </span>and<span class="w"> </span>any<span class="w"> </span>associated<span class="w"> </span>configurations
 
 Options:
-  --to TEXT     Updates to a specified version
-  --only-hugo   Updates only Hugo binary <span class="k">while</span> ignoring providers
-  --only-cloud  Updates only cloud providers <span class="k">while</span> ignoring Hugo
-  --help        Show this message and exit.
+<span class="w">  </span>--to<span class="w"> </span>TEXT<span class="w">  </span>Updates<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>specified<span class="w"> </span>version
+<span class="w">  </span>--local<span class="w">    </span>Updates<span class="w"> </span>only<span class="w"> </span><span class="nb">local</span><span class="w"> </span>Hugo<span class="w"> </span>binary<span class="w"> </span><span class="k">while</span><span class="w"> </span>ignoring<span class="w"> </span>providers
+<span class="w">  </span>--cloud<span class="w">    </span>Updates<span class="w"> </span>only<span class="w"> </span>cloud<span class="w"> </span>providers<span class="w"> </span><span class="k">while</span><span class="w"> </span>ignoring<span class="w"> </span>Hugo
+<span class="w">  </span>--help<span class="w">     </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </pre></div>
 </div>
 </section>
@@ -90,19 +87,19 @@ Options:
 <h3>–to Flag<a class="headerlink" href="#to-flag" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> can be used to install a specific version of Hugo binary</p>
 </section>
-<section id="only-hugo-flag">
-<h3>–only-hugo Flag<a class="headerlink" href="#only-hugo-flag" title="Permalink to this heading">¶</a></h3>
+<section id="local-flag">
+<h3>–local Flag<a class="headerlink" href="#local-flag" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">--only-hugo</span></code> is a binary flag. It can be used when you only want to update Hugo binary and ignore updating cloud provider</p>
+<p><code class="docutils literal notranslate"><span class="pre">--local</span></code> flag only updates Hugo binary and ignores updating cloud providers. This flag can be used when you only want to update Hugo binary and not cloud providers.</p>
 </section>
-<section id="only-cloud-flag">
-<h3>–only-cloud Flag<a class="headerlink" href="#only-cloud-flag" title="Permalink to this heading">¶</a></h3>
+<section id="cloud-flag">
+<h3>–cloud Flag<a class="headerlink" href="#cloud-flag" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">only-cloud</span></code> is a binary flag. It can be used when you only want to update cloud provider and ignore updating Hugo binary</p>
+<p><code class="docutils literal notranslate"><span class="pre">--cloud</span></code> flag only updates cloud providers and ignores updating Hugo binary locally. This flag can be used when you only want to update cloud providers and not Hugo binary locally.</p>
 </section>
 </section>
 </section>
@@ -125,8 +122,8 @@ Options:
 <li><a class="reference internal" href="#update">Update</a><ul>
 <li><a class="reference internal" href="#update-help">Update Help</a></li>
 <li><a class="reference internal" href="#to-flag">–to Flag</a></li>
-<li><a class="reference internal" href="#only-hugo-flag">–only-hugo Flag</a></li>
-<li><a class="reference internal" href="#only-cloud-flag">–only-cloud Flag</a></li>
+<li><a class="reference internal" href="#local-flag">–local Flag</a></li>
+<li><a class="reference internal" href="#cloud-flag">–cloud Flag</a></li>
 </ul>
 </li>
 </ul>
@@ -180,13 +177,13 @@ Options:
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 0.2.5 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>
