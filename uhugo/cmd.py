@@ -1,12 +1,11 @@
 import logging
 import os
-from typing import Text, Union, Iterable, List
+from typing import Text, Union, List
 
 import click
 from packaging import version
 from rich.console import Console
 from rich.panel import Panel
-from rich.prompt import Prompt
 
 from . import __version__
 from .checks import check_hugo, get_latest_version_api
@@ -14,6 +13,7 @@ from .download import download_hugo_zip
 from .install import install_hugo
 from .post_install.detect_providers import check_hugo_file, check_providers_fs, Provider
 from .post_install.update_providers import UpdateProvider
+from .utils import humanise_list
 
 log = logging.getLogger(__name__)
 console = Console()
@@ -92,9 +92,9 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
         console.print("\nLocal Hugo updated! :tada:\n", style="green bold")
 
     if only_cloud:
-        console.print("Updating only the cloud :sun_behind_cloud:", style="yellow")
+        console.print("Updating only the cloud providers :sun_behind_cloud:\n", style="yellow")
 
-    # ignore cloud provider updates with --only-hugo flag
+    # ignore cloud provider updates with --hugo flag
     if only_hugo:
         return
 
@@ -108,7 +108,7 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
         if not providers:
             return
-        console.print(f"{', '.join([_provider.name for _provider in providers])} found")
+        console.print(f"{humanise_list([_provider.name for _provider in providers])} found\n")
 
         s.update("Updating providers")
 
@@ -116,6 +116,7 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
             updater = UpdateProvider(providers, console, _ver)
             updater.update()
         except Exception as e:
+            log.debug(e)
             s.stop()
 
 

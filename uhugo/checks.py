@@ -9,9 +9,9 @@ from rich import print
 log = logging.getLogger(__name__)
 
 if platform.system() == "Windows":
-    from .terminal_commands.windows import *
+    from .terminal_commands.windows import *  # noqa
 elif platform.system() == "Linux" or platform.system() == "Darwin":
-    from .terminal_commands.posix import *
+    from .terminal_commands.posix import *  # noqa
 else:
     raise OSError("Unknown OS")
 
