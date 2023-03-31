@@ -1,7 +1,7 @@
-import json
 import pathlib
 from distutils.core import setup
 
+import toml
 from setuptools import find_packages
 
 from uhugo import __version__
@@ -10,16 +10,14 @@ here = pathlib.Path(__file__).parent.resolve()
 
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
-
 requirements = []
 
-with open('Pipfile.lock') as f:
-    deps = json.load(f)['default']
+with open('Pipfile') as f:
+    deps = toml.load(f)['packages']
 
     # remove local project which wouldn't have a hash
     for k, v in list(deps.items()):
-        requirements.append(f"{k}{v['version']}")
-
+        requirements.append(f"{k}{v}")
 
 setup(
     name="uhugo",

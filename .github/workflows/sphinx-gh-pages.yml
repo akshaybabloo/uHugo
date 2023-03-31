@@ -42,7 +42,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # name: docs
           path: _docs/_build/html
 
   # Deployment job
@@ -53,10 +52,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: URL
-        run: |
-          printenv
-          echo ${{ steps.deployment.outputs.page_url }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
