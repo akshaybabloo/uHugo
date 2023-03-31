@@ -1,5 +1,4 @@
-import codecs
-import os
+import json
 import pathlib
 from distutils.core import setup
 
@@ -12,14 +11,20 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
 
-def get_requirements(*parts):
-    return codecs.open(os.path.join(here, *parts), "r").read().splitlines()
+requirements = []
+
+with open('Pipfile.lock') as f:
+    deps = json.load(f)['default']
+
+    # remove local project which wouldn't have a hash
+    for k, v in list(deps.items()):
+        requirements.append(f"{k}{v['version']}")
 
 
 setup(
     name="uhugo",
     version=__version__,
-    install_requires=get_requirements("requirements.txt"),
+    install_requires=requirements,
     packages=find_packages(),
     url="https://github.com/akshaybabloo/uHugo",
     license="MIT",
