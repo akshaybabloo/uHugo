@@ -38,7 +38,10 @@ class Cloudflare(ProviderBase):
         if not email_address and not self.account_id and not self.hugo_version:
             raise ValueError("email_address, account_id or hugo_version not provided")
 
-        self.headers = {"X-Auth-Email": email_address, "X-Auth-Key": self.api_key}
+        if email_address:
+            self.headers = {"X-Auth-Email": email_address, "X-Auth-Key": self.api_key}
+        else:
+            self.headers = {"Authorization": f"Bearer {self.api_key}"}
 
     def update_api(self, project_name: Text) -> requests.Response:
         """
