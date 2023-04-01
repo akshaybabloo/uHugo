@@ -11,7 +11,6 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
 requirements = []
-
 with open('Pipfile') as f:
     deps = toml.load(f)['packages']
 
