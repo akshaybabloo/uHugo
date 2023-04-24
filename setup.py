@@ -1,7 +1,8 @@
+import codecs
+import os
 import pathlib
 from distutils.core import setup
 
-import toml
 from setuptools import find_packages
 
 from uhugo import __version__
@@ -10,18 +11,13 @@ here = pathlib.Path(__file__).parent.resolve()
 
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
-requirements = []
-with open('Pipfile') as f:
-    deps = toml.load(f)['packages']
-
-    # remove local project which wouldn't have a hash
-    for k, v in list(deps.items()):
-        requirements.append(f"{k}{v}")
+def get_requirements(*parts):
+    return codecs.open(os.path.join(here, *parts), "r").read().splitlines()
 
 setup(
     name="uhugo",
     version=__version__,
-    install_requires=requirements,
+    install_requires=get_requirements("requirements.txt"),
     packages=find_packages(),
     url="https://github.com/akshaybabloo/uHugo",
     license="MIT",
