@@ -39,7 +39,7 @@ jobs:
       - name: Build
         run: |
           cd _docs
-          pipenv run make html
+          make html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
