@@ -15,7 +15,7 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
         [uhugo]
         name = "cloudflare" # required
         project = "some-name" # optional
-        email_address = "env:email_address" # required
+        email_address = "env:email_address" # optional
         account_id = "env:account_id" # required
         api_key = "env:api_key" # required
 
@@ -24,12 +24,16 @@ To tell uHugo to use Cloudflare the following configuration needs to be done in 
         uhugo:
             name: "cloudflare" # required
             project: "some-name" # optional
-            email_address: "env:email_address" # required
+            email_address: "env:email_address" # optional
             account_id: "env:account_id" # required
             api_key: "env:api_key" # required
 
-``email_address`` is your authentication email ID, ``account_id`` can be retrieved from `Workers Dashboard <https://dash.cloudflare.com/?to=/:account/workers>`_ and 
-``api_key`` can be retrieved from `API Token <https://dash.cloudflare.com/profile/api-tokens>`_ and copy the "Global API Key". 
+uHugo supports two ways to authenticate with Cloudflare:
+
+1. You can use Global API key. For this you need to set ``email_address``, ``account_id`` and ``api_key`` in the configuration file. ``email_address`` is your authentication email ID, ``account_id`` can be retrieved from `Workers Dashboard <https://dash.cloudflare.com/?to=/:account/workers>`_ and
+``api_key`` can be retrieved from `API Token <https://dash.cloudflare.com/profile/api-tokens>`_ and copy the "Global API Key".
+2. Or you can use the new API keys. For this you need to set ``account_id`` and ``api_key`` in the configuration file. ``account_id`` can be retrieved from `Workers Dashboard <https://dash.cloudflare.com/?to=/:account/workers>`_ and
+``api_key`` can be retrieved from `API Token <https://dash.cloudflare.com/profile/api-tokens>`_ and use ``Edit Cloudflare Workers`` template.
 
 .. note:: ``api_key`` must be a "Global API Key" or else the API cannot be authenticated.
 
