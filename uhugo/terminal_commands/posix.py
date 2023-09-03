@@ -15,7 +15,7 @@ def check_hugo() -> Hugo:
     """
 
     try:
-        _path = subprocess.check_output(["command", "-v", "hugo"]).strip()
+        _path = subprocess.check_output(["which", "hugo"]).strip()
     except Exception:
         return Hugo("", False, version.Version("0"))
 
