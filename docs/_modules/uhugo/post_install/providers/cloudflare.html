@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>uhugo.post_install.providers.cloudflare &#8212; uHugo 1.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../../_static/tabs.js"></script>
+    <title>uhugo.post_install.providers.cloudflare &#8212; uHugo 1.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nature.css?v=601dbdee" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=a5c4661c" />
+    <script src="../../../../_static/documentation_options.js?v=25b84aaa"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/tabs.js?v=3030b3cb"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
   </head><body>
@@ -24,7 +24,7 @@
         <li class="right" >
           <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">uHugo 1.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">uHugo 1.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../providers.html" accesskey="U">uhugo.post_install.providers</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.post_install.providers.cloudflare</a></li> 
@@ -48,7 +48,9 @@
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Cloudflare"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare">[docs]</a><span class="k">class</span> <span class="nc">Cloudflare</span><span class="p">(</span><span class="n">ProviderBase</span><span class="p">):</span>
+<div class="viewcode-block" id="Cloudflare">
+<a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare">[docs]</a>
+<span class="k">class</span> <span class="nc">Cloudflare</span><span class="p">(</span><span class="n">ProviderBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cloudflare provider</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -82,7 +84,9 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
-<div class="viewcode-block" id="Cloudflare.update_api"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.update_api">[docs]</a>    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+<div class="viewcode-block" id="Cloudflare.update_api">
+<a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.update_api">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates Cloudflare Pages environment variable of ``HUGO_VERSION``.</span>
 
@@ -104,7 +108,10 @@
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span></div>
 
-<div class="viewcode-block" id="Cloudflare.get_projects"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.get_projects">[docs]</a>    <span class="k">def</span> <span class="nf">get_projects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Cloudflare.get_projects">
+<a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.get_projects">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_projects</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This checks and gets the projects available</span>
 
@@ -123,7 +130,10 @@
             <span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span></div>
 
-<div class="viewcode-block" id="Cloudflare.current_version"><a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.current_version">[docs]</a>    <span class="k">def</span> <span class="nf">current_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+
+<div class="viewcode-block" id="Cloudflare.current_version">
+<a class="viewcode-back" href="../../../../reference/post_install/providers/cloudflare.html#uhugo.post_install.providers.cloudflare.Cloudflare.current_version">[docs]</a>
+    <span class="k">def</span> <span class="nf">current_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_name</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the current Hugo version</span>
 
@@ -139,7 +149,9 @@
             <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s2">&quot;deployment_configs&quot;</span><span class="p">][</span><span class="s2">&quot;production&quot;</span><span class="p">][</span><span class="s2">&quot;env_vars&quot;</span><span class="p">][</span><span class="s2">&quot;HUGO_VERSION&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">None</span></div></div>
+            <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -171,15 +183,15 @@
         <li class="right" >
           <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../../index.html">uHugo 1.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">uHugo 1.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../providers.html" >uhugo.post_install.providers</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">uhugo.post_install.providers.cloudflare</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    &#169; Copyright 2021, Akshay Raj Gollahalli.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
     </div>
   </body>
 </html>

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Commands &#8212; uHugo 1.1.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Commands &#8212; uHugo 1.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=601dbdee" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <script src="_static/documentation_options.js?v=25b84aaa"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Providers" href="providers/index.html" />
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 1.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 1.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>  
@@ -43,14 +43,14 @@
           <div class="body" role="main">
             
   <section id="commands">
-<h1>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h1>
+<h1>Commands<a class="headerlink" href="#commands" title="Link to this heading">¶</a></h1>
 <p>uHugo is a CLI that comes with two commands</p>
 <section id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading">¶</a></h2>
 <p><cite>uhugo install</cite> command can be used to install or force install a latest Hugo binary. If a binary already exists and you wish to reinstall then you can use
 <code class="docutils literal notranslate"><span class="pre">--force</span></code> flag.</p>
 <section id="install-help">
-<h3>Install Help<a class="headerlink" href="#install-help" title="Permalink to this heading">¶</a></h3>
+<h3>Install Help<a class="headerlink" href="#install-help" title="Link to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>uhugo<span class="w"> </span>install<span class="w"> </span>--help
 Usage:<span class="w"> </span>uhugo<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
@@ -65,10 +65,10 @@ Options:
 </section>
 </section>
 <section id="update">
-<h2>Update<a class="headerlink" href="#update" title="Permalink to this heading">¶</a></h2>
+<h2>Update<a class="headerlink" href="#update" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">uhugo</span> <span class="pre">update</span></code> can be used to update an existing binary. This command can also be used to downgrade Hugo version using the <code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> flag.</p>
 <section id="update-help">
-<h3>Update Help<a class="headerlink" href="#update-help" title="Permalink to this heading">¶</a></h3>
+<h3>Update Help<a class="headerlink" href="#update-help" title="Link to this heading">¶</a></h3>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>uhugo<span class="w"> </span>update<span class="w"> </span>--help
 Usage:<span class="w"> </span>uhugo<span class="w"> </span>update<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 
@@ -83,18 +83,18 @@ Options:
 </div>
 </section>
 <section id="to-flag">
-<h3>–to Flag<a class="headerlink" href="#to-flag" title="Permalink to this heading">¶</a></h3>
+<h3>–to Flag<a class="headerlink" href="#to-flag" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">--to</span> <span class="pre">&lt;version</span> <span class="pre">number&gt;</span></code> can be used to install a specific version of Hugo binary</p>
 </section>
 <section id="local-flag">
-<h3>–local Flag<a class="headerlink" href="#local-flag" title="Permalink to this heading">¶</a></h3>
+<h3>–local Flag<a class="headerlink" href="#local-flag" title="Link to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--local</span></code> flag only updates Hugo binary and ignores updating cloud providers. This flag can be used when you only want to update Hugo binary and not cloud providers.</p>
 </section>
 <section id="cloud-flag">
-<h3>–cloud Flag<a class="headerlink" href="#cloud-flag" title="Permalink to this heading">¶</a></h3>
+<h3>–cloud Flag<a class="headerlink" href="#cloud-flag" title="Link to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.0.8.</span></p>
 </div>
@@ -176,13 +176,13 @@ Options:
         <li class="right" >
           <a href="index.html" title="Welcome to uHugo’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">uHugo 1.1.7 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">uHugo 1.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Commands</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Akshay Raj Gollahalli.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+    &#169; Copyright 2021, Akshay Raj Gollahalli.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.5.
     </div>
   </body>
 </html>
