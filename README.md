@@ -9,13 +9,13 @@ uHugo is a CLI tool to install and update Hugo binary as well as updating any cl
 uHugo depends on Python 3.6+, on your terminal:
 
 ```sh
-> pip install uhugo
+pip install uhugo
 ```
 
 Once installed you can test it by:
 
 ```sh
-> uhugo --version
+uhugo --version
 ```
 
 ## Usage
