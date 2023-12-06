@@ -26,11 +26,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install build
-    - name: Build package
-      run: python -m build --wheel
+        pip install pipx
+        pipx install poetry
+        poetry lock
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
+      run: |
+        poetry config pypi-token.pypi "$password"
+        poetry publish
+      env:
         password: ${{ secrets.PYPI_API_TOKEN }}
