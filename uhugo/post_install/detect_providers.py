@@ -4,7 +4,6 @@ from typing import Union, List
 
 from pydantic import BaseModel
 
-# HERE = os.path.abspath(os.path.dirname(__file__))
 HERE = os.getcwd()
 
 

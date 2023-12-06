@@ -31,21 +31,34 @@ class UpdateProvider:
         """
         Update providers with Hugo version
         """
+        _providers = {
+            "netlify": True,
+            "vercel": True,
+            "cloudflare": True,
+        }
         for provider in self.providers:
             if provider.name == "netlify":
-                self.update_netlify(provider)
+                _providers[provider.name] = self.update_netlify(provider)
             elif provider.name == "vercel":
-                self.update_vercel(provider)
+                _providers[provider.name] = self.update_vercel(provider)
             elif provider.name == "cloudflare":
-                self.update_cloudflare(provider)
+                _providers[provider.name] = self.update_cloudflare(provider)
 
+        failed_providers = _providers.items()
+
+        if len(failed_providers) > 0:
+            for provider, status in _providers.items():
+                if not status:
+                    self.console.print(f"\n{provider} provider(s) not updated to {self.version} :x:", style="red bold")
+            return
         self.console.print(f"\nAll providers updated to {self.version} :tada:", style="green bold")
 
-    def update_netlify(self, provider: Provider):
+    def update_netlify(self, provider: Provider) -> bool:
         """
         Update Netlify provider with a latest Hugo variables
 
         :param provider: Provider object
+        :return: False if not updated
         """
         try:
             with open(provider.path, "r+") as f:
@@ -54,7 +67,7 @@ class UpdateProvider:
                     self.console.print(
                         ":heavy_check_mark: Netlify - Hugo version is already up to date", style="green bold"
                     )
-                    return
+                    return True
                 data["context"]["production"]["environment"]["HUGO_VERSION"] = self.version
                 data["context"]["deploy-preview"]["environment"]["HUGO_VERSION"] = self.version
                 f.seek(0)
@@ -64,13 +77,14 @@ class UpdateProvider:
         except FileNotFoundError as e:
             log.debug(e)
             self.console.print(f":x: Netlify - File '{provider.path}' not found", style="bold red")
-            exit(1)
+            return False
 
-    def update_vercel(self, provider: Provider):
+    def update_vercel(self, provider: Provider) -> bool:
         """
         Update Vercel provider with a latest Hugo variables
 
         :param provider: Provider object
+        :return: False if not updated
         """
 
         try:
@@ -80,7 +94,7 @@ class UpdateProvider:
                     self.console.print(
                         ":heavy_check_mark: Vercel - Hugo version is already up to date", style="green bold"
                     )
-                    return
+                    return True
                 json_data["build"]["env"]["HUGO_VERSION"] = self.version
                 f.seek(0)
                 json.dump(json_data, f, indent=4)
@@ -89,24 +103,25 @@ class UpdateProvider:
         except FileNotFoundError as e:
             log.debug(e)
             self.console.print(f":x: Vercel - File '{provider.path}' not found", style="bold red")
-            exit(1)
+            return False
 
-    def update_cloudflare(self, provider: Provider):
+    def update_cloudflare(self, provider: Provider) -> bool:
         """
         Update Cloudflare provider with a latest Hugo variables
 
         :param provider: Provider object
+        :return: False if not updated
         """
 
         # Get the environment variables from the config file
-        for key, val in provider.dict().items():
+        for key, val in provider.model_dump().items():
             if val and val.startswith("env"):
                 try:
                     setattr(provider, key, os.environ[val.split(":")[1]])
                 except KeyError as e:
                     log.debug(e)
                     self.console.print(f"Environment variable '{val.split(':')[1]}' not found", style="bold red")
-                    exit(1)
+                    return False
 
         from ..post_install.providers.cloudflare import Cloudflare
 
@@ -119,7 +134,7 @@ class UpdateProvider:
         elif not projects["success"]:
             self.console.print("There was an error fetching your Cloudflare project", style="bold red")
             log.debug(projects)
-            exit(1)
+            return False
         else:
             name = provider.project
 
@@ -128,11 +143,11 @@ class UpdateProvider:
             log.debug(f"Current Hugo version in Cloudflare: v{current_version}")
         else:
             self.console.print(":heavy_check_mark: Cloudflare - Hugo version is already up to date", style="green bold")
-            return
+            return False
 
         response = cf.update_api(name).json()
         if not response["success"]:
             self.console.print("There was an error updating your Cloudflare environment")
             log.debug(response)
-            exit(1)
+            return False
         self.console.print(":heavy_check_mark: Cloudflare", style="green bold")
