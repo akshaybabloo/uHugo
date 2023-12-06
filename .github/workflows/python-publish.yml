@@ -28,7 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipx
         pipx install poetry
-        poetry lock
+        poetry install
     - name: Publish package
       run: |
         poetry config pypi-token.pypi "$password"
