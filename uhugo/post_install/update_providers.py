@@ -74,6 +74,7 @@ class UpdateProvider:
                 toml.dump(data, f)
                 f.truncate()
             self.console.print(":heavy_check_mark: Netlify", style="green bold")
+            return True
         except FileNotFoundError as e:
             log.debug(e)
             self.console.print(f":x: Netlify - File '{provider.path}' not found", style="bold red")
@@ -100,6 +101,7 @@ class UpdateProvider:
                 json.dump(json_data, f, indent=4)
                 f.truncate()
             self.console.print(":heavy_check_mark: Vercel", style="green bold")
+            return True
         except FileNotFoundError as e:
             log.debug(e)
             self.console.print(f":x: Vercel - File '{provider.path}' not found", style="bold red")
@@ -151,3 +153,4 @@ class UpdateProvider:
             log.debug(response)
             return False
         self.console.print(":heavy_check_mark: Cloudflare", style="green bold")
+        return True
