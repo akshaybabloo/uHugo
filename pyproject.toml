@@ -36,7 +36,7 @@ pydantic = "^2.7.0"
 packaging = "^24.0"
 
 [tool.poetry.group.dev.dependencies]
-sphinx = "^7.3.6"
+sphinx = ">=7.3.6,<9.0.0"
 sphinx-tabs = "^3.4.5"
 pytest = "^8.1.1"
 pytest-mock = "^3.14.0"
