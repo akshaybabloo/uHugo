@@ -48,7 +48,7 @@ codecov = "^2.1.13"
 coverage = "^7.4.4"
 pytest-runner = "^6.0.1"
 flake8 = "^7.0.0"
-ruff = ">=0.5.0,<0.7.0"
+ruff = ">=0.5.0,<0.8.0"
 black = ">=24.4.0"
 
 [build-system]
