@@ -1,6 +1,6 @@
 [project]
 name = "uhugo"
-version = "1.3.7"
+version = "1.3.8"
 description = "uHugo is a CLI tool to install and update Hugo binary as well as updating any cloud providers"
 authors = [
     {name = "Akshay Raj Gollahalli", email = "akshay@gollahalli.com"},
