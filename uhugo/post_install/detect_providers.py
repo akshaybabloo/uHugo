@@ -48,6 +48,9 @@ def check_hugo_file() -> Provider:
         with open(path) as f:
             data = toml.load(f)
 
+    if "uhugo" not in data:
+        return Provider()
+
     return Provider(**data["uhugo"])
 
 
