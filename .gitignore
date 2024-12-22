@@ -140,6 +140,7 @@ netlify.toml
 netlify.yaml
 netlify.json
 vercel.json
+wrangler.toml
 temp.py
 *.ps1
 !tests/*.toml

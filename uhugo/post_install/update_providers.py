@@ -41,8 +41,8 @@ class UpdateProvider:
                 _providers[provider.name] = self.update_netlify(provider)
             elif provider.name == "vercel":
                 _providers[provider.name] = self.update_vercel(provider)
-            elif provider.name == "cloudflare":
-                _providers[provider.name] = self.update_cloudflare(provider)
+            elif provider.name == "cloudflare" or provider.name == "wrangler":
+                _providers[provider.name] = self.update_cloudflare(provider, is_wrangler=True if provider.name == "wrangler" else False)
 
         failed_providers = _providers.items()
 
@@ -107,13 +107,35 @@ class UpdateProvider:
             self.console.print(f":x: Vercel - File '{provider.path}' not found", style="bold red")
             return False
 
-    def update_cloudflare(self, provider: Provider) -> bool:
+    def update_cloudflare(self, provider: Provider, is_wrangler = False) -> bool:
         """
         Update Cloudflare provider with a latest Hugo variables
 
+        :param is_wrangler: If the ``wrangler.toml`` file is being used
         :param provider: Provider object
         :return: False if not updated
         """
+
+        if is_wrangler:
+            try:
+                with open(provider.path, "r+") as f:
+                    data = toml.load(f)
+                    if data["vars"]["HUGO_VERSION"] == self.version:
+                        self.console.print(
+                            ":heavy_check_mark: Cloudflare - Hugo version is already up to date", style="green bold"
+                        )
+                        return True
+                    data["vars"]["HUGO_VERSION"] = self.version
+                    data["env"]["production"]["vars"]["HUGO_VERSION"] = self.version
+                    f.seek(0)
+                    toml.dump(data, f)
+                    f.truncate()
+                self.console.print(":heavy_check_mark: Cloudflare", style="green bold")
+                return True
+            except FileNotFoundError as e:
+                log.debug(e)
+                self.console.print(f":x: Cloudflare - File '{provider.path}' not found", style="bold red")
+                return False
 
         # Get the environment variables from the config file
         for key, val in provider.model_dump().items():
