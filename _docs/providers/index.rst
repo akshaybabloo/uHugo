@@ -8,10 +8,8 @@ Providers are cloud hosted services that host your static website. uHugo comes w
 Every provider has their own configuration files.
 
 1. Netlify - ``netlify.toml``
-2. Cloudflare - ``config.[toml|yaml]``
+2. Cloudflare - ``config.[toml|yaml]`` or ``wrangler.toml``
 3. Vercel - ``vercel.json``
-
-.. note:: For Cloudflare, the configurations must be put in Hugo's ``config.[toml|yaml]`` file.
 
 Supported Providers
 -------------------
