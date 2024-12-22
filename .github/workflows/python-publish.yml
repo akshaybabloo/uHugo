@@ -58,7 +58,8 @@ jobs:
           cd _docs
           uv run make html
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _docs/_build/html
 
