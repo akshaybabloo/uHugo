@@ -52,6 +52,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync
+          uv pip install .
       - name: Build
         run: |
           cd _docs
