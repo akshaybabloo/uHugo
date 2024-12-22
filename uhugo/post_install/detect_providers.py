@@ -58,7 +58,7 @@ def check_providers_fs() -> List[Provider]:
     :return: A Provider
     """
 
-    files = ["netlify.yaml", "vercel.json", "netlify.toml"]
+    files = ["netlify.yaml", "vercel.json", "netlify.toml", "wrangler.toml"]
     providers: List[Provider] = []
 
     for file in files:
