@@ -6,6 +6,7 @@ import click
 from packaging import version
 from rich.console import Console
 from rich.panel import Panel
+from dotenv import load_dotenv
 
 from . import __version__
 from .checks import check_hugo, get_latest_version_api
@@ -15,11 +16,16 @@ from .post_install.detect_providers import check_hugo_file, check_providers_fs, 
 from .post_install.update_providers import UpdateProvider
 from .utils import humanise_list
 
+load_dotenv()
+
 log = logging.getLogger(__name__)
 console = Console()
 
 
-@click.group(name="uhugo", help="uhugo is a Hugo binary helper that downloads and set ups the environment.")
+@click.group(
+    name="uhugo",
+    help="uhugo is a Hugo binary helper that downloads and set ups the environment.",
+)
 @click.option("--debug", help="Use debug mode", default=False, is_flag=True)
 @click.version_option(__version__, package_name="uHugo", prog_name="uHugo")
 @click.pass_context
@@ -29,7 +35,9 @@ def cli(ctx: click.core.Context, debug: bool):
 
     if debug:
         logging.basicConfig(
-            level="DEBUG", format="%(asctime)s %(name)s - %(levelname)s:'%(message)s'", datefmt="%d-%b-%y %H:%M:%S"
+            level="DEBUG",
+            format="%(asctime)s %(name)s - %(levelname)s:'%(message)s'",
+            datefmt="%d-%b-%y %H:%M:%S",
         )
 
 
@@ -39,7 +47,12 @@ def cli(ctx: click.core.Context, debug: bool):
 def install(ver: Text, force: bool):
     hugo = check_hugo()
     if hugo.exists and not force:
-        click.echo(console.print("Hugo has already been installed. Use 'uhugo update' to update.", style="red"))
+        click.echo(
+            console.print(
+                "Hugo has already been installed. Use 'uhugo update' to update.",
+                style="red",
+            )
+        )
         return
 
     if force:
@@ -48,7 +61,9 @@ def install(ver: Text, force: bool):
 
     with console.status("Fetching latest version", spinner="dots"):
         _ver = get_latest_version_api(ver)
-    click.echo(console.print(f"- Latest version is v{_ver}", style="yellow bold"), color=True)
+    click.echo(
+        console.print(f"- Latest version is v{_ver}", style="yellow bold"), color=True
+    )
 
     download_path = download_hugo_zip(_ver)
 
@@ -57,17 +72,35 @@ def install(ver: Text, force: bool):
 
     console.print("\nHugo installed! :tada:\n", style="green bold")
 
-    console.print(Panel.fit(f"[bold green]Make sure {installed_path!r} is in your $PATH", title="Note"))
+    console.print(
+        Panel.fit(
+            f"[bold green]Make sure {installed_path!r} is in your $PATH", title="Note"
+        )
+    )
 
 
 @cli.command(help="Updates Hugo binary files and any associated configurations")
 @click.option("--to", default=None, help="Updates to a specified version")
-@click.option("--local", "only_hugo", is_flag=True, help="Updates only local Hugo binary while ignoring providers")
-@click.option("--cloud", "only_cloud", is_flag=True, help="Updates only cloud providers while ignoring Hugo")
+@click.option(
+    "--local",
+    "only_hugo",
+    is_flag=True,
+    help="Updates only local Hugo binary while ignoring providers",
+)
+@click.option(
+    "--cloud",
+    "only_cloud",
+    is_flag=True,
+    help="Updates only cloud providers while ignoring Hugo",
+)
 def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
     hugo = check_hugo()
     if not hugo.exists:
-        click.echo(console.print("Hugo is not installed. Use 'uhugo install' to install.", style="red"))
+        click.echo(
+            console.print(
+                "Hugo is not installed. Use 'uhugo install' to install.", style="red"
+            )
+        )
         return
 
     with console.status("Fetching latest version", spinner="dots"):
@@ -80,7 +113,11 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
     if not to and not (hugo.version >= version.Version(_ver)):
         console.print(
-            Panel.fit(f"New version available, v{hugo.version} -> v{_ver}", title=f"Hugo v{_ver}"), style="green"
+            Panel.fit(
+                f"New version available, v{hugo.version} -> v{_ver}",
+                title=f"Hugo v{_ver}",
+            ),
+            style="green",
         )
 
     if not only_cloud:
@@ -92,7 +129,9 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
         console.print("\nLocal Hugo updated! :tada:\n", style="green bold")
 
     if only_cloud:
-        console.print("Updating only the cloud providers :sun_behind_cloud:\n", style="yellow")
+        console.print(
+            "Updating only the cloud providers :sun_behind_cloud:\n", style="yellow"
+        )
 
     # ignore cloud provider updates with --hugo flag
     if only_hugo:
@@ -108,7 +147,9 @@ def update(to: Union[Text, None], only_hugo: bool, only_cloud: bool) -> None:
 
         if not providers:
             return
-        console.print(f"{humanise_list([_provider.name for _provider in providers])} found\n")
+        console.print(
+            f"{humanise_list([_provider.name for _provider in providers])} found\n"
+        )
 
         s.update("Updating providers")
 

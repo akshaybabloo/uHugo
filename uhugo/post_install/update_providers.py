@@ -42,16 +42,23 @@ class UpdateProvider:
             elif provider.name == "vercel":
                 _providers[provider.name] = self.update_vercel(provider)
             elif provider.name == "cloudflare" or provider.name == "wrangler":
-                _providers[provider.name] = self.update_cloudflare(provider, is_wrangler=True if provider.name == "wrangler" else False)
+                _providers[provider.name] = self.update_cloudflare(
+                    provider, is_wrangler=True if provider.name == "wrangler" else False
+                )
 
         failed_providers = _providers.items()
 
         if len(failed_providers) > 0:
             for provider, status in _providers.items():
                 if not status:
-                    self.console.print(f"\n{provider} provider(s) not updated to {self.version} :x:", style="red bold")
+                    self.console.print(
+                        f"\n{provider} provider(s) not updated to {self.version} :x:",
+                        style="red bold",
+                    )
             return
-        self.console.print(f"\nAll providers updated to {self.version} :tada:", style="green bold")
+        self.console.print(
+            f"\nAll providers updated to {self.version} :tada:", style="green bold"
+        )
 
     def update_netlify(self, provider: Provider) -> bool:
         """
@@ -63,13 +70,21 @@ class UpdateProvider:
         try:
             with open(provider.path, "r+") as f:
                 data = toml.load(f)
-                if data["context"]["production"]["environment"]["HUGO_VERSION"] == self.version:
+                if (
+                    data["context"]["production"]["environment"]["HUGO_VERSION"]
+                    == self.version
+                ):
                     self.console.print(
-                        ":heavy_check_mark: Netlify - Hugo version is already up to date", style="green bold"
+                        ":heavy_check_mark: Netlify - Hugo version is already up to date",
+                        style="green bold",
                     )
                     return True
-                data["context"]["production"]["environment"]["HUGO_VERSION"] = self.version
-                data["context"]["deploy-preview"]["environment"]["HUGO_VERSION"] = self.version
+                data["context"]["production"]["environment"]["HUGO_VERSION"] = (
+                    self.version
+                )
+                data["context"]["deploy-preview"]["environment"]["HUGO_VERSION"] = (
+                    self.version
+                )
                 f.seek(0)
                 toml.dump(data, f)
                 f.truncate()
@@ -77,7 +92,9 @@ class UpdateProvider:
             return True
         except FileNotFoundError as e:
             log.debug(e)
-            self.console.print(f":x: Netlify - File '{provider.path}' not found", style="bold red")
+            self.console.print(
+                f":x: Netlify - File '{provider.path}' not found", style="bold red"
+            )
             return False
 
     def update_vercel(self, provider: Provider) -> bool:
@@ -93,7 +110,8 @@ class UpdateProvider:
                 json_data = json.load(f)
                 if json_data["build"]["env"]["HUGO_VERSION"] == self.version:
                     self.console.print(
-                        ":heavy_check_mark: Vercel - Hugo version is already up to date", style="green bold"
+                        ":heavy_check_mark: Vercel - Hugo version is already up to date",
+                        style="green bold",
                     )
                     return True
                 json_data["build"]["env"]["HUGO_VERSION"] = self.version
@@ -104,10 +122,12 @@ class UpdateProvider:
             return True
         except FileNotFoundError as e:
             log.debug(e)
-            self.console.print(f":x: Vercel - File '{provider.path}' not found", style="bold red")
+            self.console.print(
+                f":x: Vercel - File '{provider.path}' not found", style="bold red"
+            )
             return False
 
-    def update_cloudflare(self, provider: Provider, is_wrangler = False) -> bool:
+    def update_cloudflare(self, provider: Provider, is_wrangler=False) -> bool:
         """
         Update Cloudflare provider with a latest Hugo variables
 
@@ -122,7 +142,8 @@ class UpdateProvider:
                     data = toml.load(f)
                     if data["vars"]["HUGO_VERSION"] == self.version:
                         self.console.print(
-                            ":heavy_check_mark: Cloudflare - Hugo version is already up to date", style="green bold"
+                            ":heavy_check_mark: Cloudflare - Hugo version is already up to date",
+                            style="green bold",
                         )
                         return True
                     data["vars"]["HUGO_VERSION"] = self.version
@@ -134,7 +155,10 @@ class UpdateProvider:
                 return True
             except FileNotFoundError as e:
                 log.debug(e)
-                self.console.print(f":x: Cloudflare - File '{provider.path}' not found", style="bold red")
+                self.console.print(
+                    f":x: Cloudflare - File '{provider.path}' not found",
+                    style="bold red",
+                )
                 return False
 
         # Get the environment variables from the config file
@@ -144,19 +168,26 @@ class UpdateProvider:
                     setattr(provider, key, os.environ[val.split(":")[1]])
                 except KeyError as e:
                     log.debug(e)
-                    self.console.print(f"Environment variable '{val.split(':')[1]}' not found", style="bold red")
+                    self.console.print(
+                        f"Environment variable '{val.split(':')[1]}' not found",
+                        style="bold red",
+                    )
                     return False
 
         from ..post_install.providers.cloudflare import Cloudflare
 
-        cf = Cloudflare(provider.api_key, provider.email_address, provider.account_id, self.version)
+        cf = Cloudflare(
+            provider.api_key, provider.email_address, provider.account_id, self.version
+        )
         projects = cf.get_projects(provider.project).json()
         # TODO: Stop spinner before continuing or else this will not show up
         if projects["success"] and isinstance(projects["result"], list):
             names = [name["name"] for name in projects["result"]]
             name = Prompt.ask("Enter project name", choices=names)
         elif not projects["success"]:
-            self.console.print("There was an error fetching your Cloudflare project", style="bold red")
+            self.console.print(
+                "There was an error fetching your Cloudflare project", style="bold red"
+            )
             log.debug(projects)
             return False
         else:
@@ -166,12 +197,17 @@ class UpdateProvider:
         if current_version != self.version:
             log.debug(f"Current Hugo version in Cloudflare: v{current_version}")
         else:
-            self.console.print(":heavy_check_mark: Cloudflare - Hugo version is already up to date", style="green bold")
+            self.console.print(
+                ":heavy_check_mark: Cloudflare - Hugo version is already up to date",
+                style="green bold",
+            )
             return False
 
         response = cf.update_api(name).json()
         if not response["success"]:
-            self.console.print("There was an error updating your Cloudflare environment")
+            self.console.print(
+                "There was an error updating your Cloudflare environment"
+            )
             log.debug(response)
             return False
         self.console.print(":heavy_check_mark: Cloudflare", style="green bold")

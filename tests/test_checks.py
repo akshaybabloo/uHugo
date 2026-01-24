@@ -17,10 +17,16 @@ def test_bin_folder(monkeypatch):
 
 
 def test_get_latest_version_api(requests_mock):
-    requests_mock.get("https://api.github.com/repos/gohugoio/hugo/releases/latest", json={"tag_name": "v0.85.0"})
+    requests_mock.get(
+        "https://api.github.com/repos/gohugoio/hugo/releases/latest",
+        json={"tag_name": "v0.85.0"},
+    )
     assert "0.85.0" == get_latest_version_api()
 
 
 def test_get_latest_version_api_override(requests_mock):
-    requests_mock.get("https://api.github.com/repos/gohugoio/hugo/releases/tags/v0.85.0", text="0.85.0")
+    requests_mock.get(
+        "https://api.github.com/repos/gohugoio/hugo/releases/tags/v0.85.0",
+        text="0.85.0",
+    )
     assert "0.85.0" == get_latest_version_api("0.85.0")

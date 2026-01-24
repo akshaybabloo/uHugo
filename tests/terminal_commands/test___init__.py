@@ -8,4 +8,7 @@ def test_hugo_version_cmd(fake_process):
     )
 
     data = hugo_version_cmd()
-    assert data == b"hugo v0.85.0-724D5DB5+extended darwin/amd64 BuildDate=2021-07-05T10:46:28Z VendorInfo=gohugoio"
+    assert (
+        data
+        == b"hugo v0.85.0-724D5DB5+extended darwin/amd64 BuildDate=2021-07-05T10:46:28Z VendorInfo=gohugoio"
+    )

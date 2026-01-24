@@ -15,7 +15,11 @@ class Cloudflare(ProviderBase):
     """
 
     def __init__(
-        self, api_key: Text = None, email_address: Text = None, account_id: Text = None, hugo_version: Text = None
+        self,
+        api_key: Text = None,
+        email_address: Text = None,
+        account_id: Text = None,
+        hugo_version: Text = None,
     ):
         """
 
@@ -53,8 +57,18 @@ class Cloudflare(ProviderBase):
 
         data = {
             "deployment_configs": {
-                "preview": {"env_vars": {"delete_this_env_var": None, "HUGO_VERSION": {"value": self.hugo_version}}},
-                "production": {"env_vars": {"delete_this_env_var": None, "HUGO_VERSION": {"value": self.hugo_version}}},
+                "preview": {
+                    "env_vars": {
+                        "delete_this_env_var": None,
+                        "HUGO_VERSION": {"value": self.hugo_version},
+                    }
+                },
+                "production": {
+                    "env_vars": {
+                        "delete_this_env_var": None,
+                        "HUGO_VERSION": {"value": self.hugo_version},
+                    }
+                },
             }
         }
 
@@ -75,7 +89,8 @@ class Cloudflare(ProviderBase):
 
         if not project_name:
             response = requests.get(
-                f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects", headers=self.headers
+                f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/pages/projects",
+                headers=self.headers,
             )
         else:
             response = requests.get(
@@ -97,7 +112,9 @@ class Cloudflare(ProviderBase):
 
         data = response.json()
         try:
-            return data["result"]["deployment_configs"]["production"]["env_vars"]["HUGO_VERSION"]["value"]
+            return data["result"]["deployment_configs"]["production"]["env_vars"][
+                "HUGO_VERSION"
+            ]["value"]
         except KeyError as e:
             log.debug(e)
             return None

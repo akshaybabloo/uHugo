@@ -7,7 +7,9 @@ class ProviderBase:
     This is a base class for all the providers
     """
 
-    def __init__(self, api_key: Text = None, config_path: Text = None, hugo_version: Text = None):
+    def __init__(
+        self, api_key: Text = None, config_path: Text = None, hugo_version: Text = None
+    ):
         """
 
         :param hugo_version: New Hugo version

@@ -27,7 +27,9 @@ def bin_folder() -> str:
     bin_path = Path(Path.home(), "bin")
 
     if not bin_path.is_dir():
-        log.debug(f"bin directory does not exists. Creating one now. New path: {bin_path!r}")
+        log.debug(
+            f"bin directory does not exists. Creating one now. New path: {bin_path!r}"
+        )
         bin_path.mkdir()
 
     return str(bin_path)
@@ -42,7 +44,9 @@ def get_latest_version_api(override_version: str = None) -> str:
     """
 
     if override_version is not None:
-        hugo_response = requests.get(f"https://api.github.com/repos/gohugoio/hugo/releases/tags/v{override_version}")
+        hugo_response = requests.get(
+            f"https://api.github.com/repos/gohugoio/hugo/releases/tags/v{override_version}"
+        )
         if hugo_response.ok:
             return override_version
         else:
@@ -53,7 +57,9 @@ def get_latest_version_api(override_version: str = None) -> str:
             )
             exit(1)
 
-    hugo_response = requests.get("https://api.github.com/repos/gohugoio/hugo/releases/latest")
+    hugo_response = requests.get(
+        "https://api.github.com/repos/gohugoio/hugo/releases/latest"
+    )
     try:
         hugo_response = hugo_response.json()["tag_name"][1:]
     except (KeyError, json.JSONDecodeError):

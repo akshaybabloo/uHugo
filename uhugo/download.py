@@ -3,7 +3,14 @@ import platform
 import tempfile
 
 import requests
-from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, TransferSpeedColumn, TimeRemainingColumn
+from rich.progress import (
+    Progress,
+    TextColumn,
+    BarColumn,
+    DownloadColumn,
+    TransferSpeedColumn,
+    TimeRemainingColumn,
+)
 
 progress = Progress(
     TextColumn("[bold blue]{task.fields[filename]}", justify="right"),
@@ -19,7 +26,9 @@ progress = Progress(
 )
 
 
-def download_hugo_zip(version: str, os_type: str = None, download_to: str = None) -> str:
+def download_hugo_zip(
+    version: str, os_type: str = None, download_to: str = None
+) -> str:
     """
     Download the Hugo file to temp folder.
 

@@ -59,12 +59,14 @@ def check_providers_fs(cwd=os.getcwd()) -> List[Provider]:
     :return: A Provider
     """
 
-    files = ["netlify.yaml", "vercel.json", "netlify.toml", "wrangler.toml"]
+    files = ["netlify.yaml", "vercel.json", "netlify.toml", "wrangler.jsonc"]
     providers: List[Provider] = []
 
     for file in files:
         path = Path(cwd, file)
         if path.exists():
-            providers.append(Provider(**{"name": path.name.split(".")[0], "path": path.__str__()}))
+            providers.append(
+                Provider(**{"name": path.name.split(".")[0], "path": path.__str__()})
+            )
 
     return providers

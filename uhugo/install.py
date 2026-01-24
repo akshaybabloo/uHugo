@@ -8,7 +8,9 @@ from .checks import bin_folder
 log = logging.getLogger(__name__)
 
 
-def install_hugo(extract_from: str, os_type: str = platform.system(), move_to: str = bin_folder()) -> str:
+def install_hugo(
+    extract_from: str, os_type: str = platform.system(), move_to: str = bin_folder()
+) -> str:
     """
     Installs the ``hugo`` binary at a given path
 
