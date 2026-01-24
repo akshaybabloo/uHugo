@@ -60,7 +60,7 @@ def download_hugo_zip(version: str, os_type: str = None, download_to: str = None
             else:
                 raise OSError(f"{os_type} not supported.")
 
-            if response.headers.get("Status") == "404 Not Found":
+            if response.status_code == 404:
                 raise requests.exceptions.HTTPError("File not found")
 
             total_length = int(response.headers.get("content-length"))

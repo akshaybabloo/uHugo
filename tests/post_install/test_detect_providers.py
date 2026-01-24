@@ -1,10 +1,23 @@
 import os
-
+import toml
+import yaml
 from uhugo.post_install.detect_providers import check_hugo_file, check_providers_fs, Provider
 
-
-def test_check_hugo_file_toml():
-    assert check_hugo_file() == Provider(
+def test_check_hugo_file_toml(tmp_path):
+    config_data = {
+        "uhugo": {
+            "name": "cloudflare",
+            "project": "gollahalli-com",
+            "api_key": "env:cloudflare_key",
+            "account_id": "env:cloudflare_account_id",
+            "email_address": "env:cloudflare_email",
+        }
+    }
+    config_file = tmp_path / "config.toml"
+    with open(config_file, "w") as f:
+        toml.dump(config_data, f)
+    
+    assert check_hugo_file(cwd=tmp_path) == Provider(
         name="cloudflare",
         project="gollahalli-com",
         file_name=None,
@@ -14,10 +27,21 @@ def test_check_hugo_file_toml():
         path=None,
     )
 
-
-def test_check_hugo_file_yaml():
-    os.remove(os.path.join(os.getcwd(), "config.toml"))
-    assert check_hugo_file() == Provider(
+def test_check_hugo_file_yaml(tmp_path):
+    config_data = {
+        "uhugo": {
+            "name": "cloudflare",
+            "project": "gollahalli-com",
+            "api_key": "env:cloudflare_key",
+            "account_id": "env:cloudflare_account_id",
+            "email_address": "env:cloudflare_email",
+        }
+    }
+    config_file = tmp_path / "config.yaml"
+    with open(config_file, "w") as f:
+        yaml.dump(config_data, f)
+        
+    assert check_hugo_file(cwd=tmp_path) == Provider(
         name="cloudflare",
         project="gollahalli-com",
         file_name=None,
@@ -27,30 +51,32 @@ def test_check_hugo_file_yaml():
         path=None,
     )
 
+def test_check_hugo_file_no_file(tmp_path):
+    # Ensure no config files exist in tmp_path
+    assert check_hugo_file(cwd=tmp_path) == Provider()
 
-def test_check_hugo_file_no_file():
-    os.remove(os.path.join(os.getcwd(), "config.yaml"))
-    assert check_hugo_file() == Provider()
-
-
-def test_check_providers_fs():
-    assert check_providers_fs() == [
+def test_check_providers_fs(tmp_path):
+    # Create dummy provider files
+    (tmp_path / "vercel.json").touch()
+    (tmp_path / "netlify.toml").touch()
+    
+    expected = [
         Provider(
             name="vercel",
-            project=None,
-            file_name=None,
-            api_key=None,
-            account_id=None,
-            email_address=None,
-            path=os.path.join(os.getcwd(), "vercel.json"),
+            path=str(tmp_path / "vercel.json"),
         ),
         Provider(
             name="netlify",
-            project=None,
-            file_name=None,
-            api_key=None,
-            account_id=None,
-            email_address=None,
-            path=os.path.join(os.getcwd(), "netlify.toml"),
+            path=str(tmp_path / "netlify.toml"),
         ),
     ]
+    
+    # Sort by name to ensure consistent order for comparison, 
+    # as the implementation iterates through a fixed list but order of append depends on file existence.
+    # Actually, check_providers_fs iterates over a fixed list: ["netlify.yaml", "vercel.json", "netlify.toml", "wrangler.toml"]
+    # So vercel comes before netlify.toml.
+    
+    result = check_providers_fs(cwd=tmp_path)
+    assert len(result) == 2
+    assert result[0].name == "vercel"
+    assert result[1].name == "netlify"

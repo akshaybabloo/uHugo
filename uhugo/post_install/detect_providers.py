@@ -4,8 +4,6 @@ from typing import Union, List
 
 from pydantic import BaseModel
 
-HERE = os.getcwd()
-
 
 class Provider(BaseModel):
     """
@@ -21,16 +19,16 @@ class Provider(BaseModel):
     path: Union[str, None] = None
 
 
-def check_hugo_file() -> Provider:
+def check_hugo_file(cwd=os.getcwd()) -> Provider:
     """
     Checks for ``config.yaml`` or ``config.toml``, if exists then it checks for ``uhugo`` key
 
     :return Provider: An object with ``name`` and ``file_name``
     """
 
-    path = Path(HERE, "config.toml")
+    path = Path(cwd, "config.toml")
     if not path.exists():
-        path = Path(HERE, "config.yaml")
+        path = Path(cwd, "config.yaml")
         if not path.exists():
             return Provider()
         else:
@@ -54,7 +52,7 @@ def check_hugo_file() -> Provider:
     return Provider(**data["uhugo"])
 
 
-def check_providers_fs() -> List[Provider]:
+def check_providers_fs(cwd=os.getcwd()) -> List[Provider]:
     """
     Checks file system for any providers that matches the list
 
@@ -65,7 +63,7 @@ def check_providers_fs() -> List[Provider]:
     providers: List[Provider] = []
 
     for file in files:
-        path = Path(HERE, file)
+        path = Path(cwd, file)
         if path.exists():
             providers.append(Provider(**{"name": path.name.split(".")[0], "path": path.__str__()}))
 

@@ -54,6 +54,11 @@ def get_latest_version_api(override_version: str = None) -> str:
             exit(1)
 
     hugo_response = requests.get("https://api.github.com/repos/gohugoio/hugo/releases/latest")
-    hugo_response = json.loads(hugo_response.content.decode("utf-8"))["tag_name"][1:]
+    try:
+        hugo_response = hugo_response.json()["tag_name"][1:]
+    except (KeyError, json.JSONDecodeError):
+        log.debug("Failed to parse GitHub response", hugo_response.content)
+        print("\n[red bold]Failed to get latest Hugo version from GitHub.")
+        exit(1)
 
     return hugo_response
